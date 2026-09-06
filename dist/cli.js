@@ -29,7 +29,7 @@ var __esm = (fn, res) => () => (fn && (res = fn(fn = 0)), res);
 var __promiseAll = (args) => Promise.all(args);
 var __require = import.meta.require;
 
-// node_modules/commander/lib/error.js
+// ../../node_modules/commander/lib/error.js
 var require_error = __commonJS((exports) => {
   class CommanderError extends Error {
     constructor(exitCode, code, message) {
@@ -53,7 +53,7 @@ var require_error = __commonJS((exports) => {
   exports.InvalidArgumentError = InvalidArgumentError;
 });
 
-// node_modules/commander/lib/argument.js
+// ../../node_modules/commander/lib/argument.js
 var require_argument = __commonJS((exports) => {
   var { InvalidArgumentError } = require_error();
 
@@ -132,7 +132,7 @@ var require_argument = __commonJS((exports) => {
   exports.humanReadableArgName = humanReadableArgName;
 });
 
-// node_modules/commander/lib/help.js
+// ../../node_modules/commander/lib/help.js
 var require_help = __commonJS((exports) => {
   var { humanReadableArgName } = require_argument();
 
@@ -482,7 +482,7 @@ ${itemIndentStr}`);
   exports.stripColor = stripColor;
 });
 
-// node_modules/commander/lib/option.js
+// ../../node_modules/commander/lib/option.js
 var require_option = __commonJS((exports) => {
   var { InvalidArgumentError } = require_error();
 
@@ -660,7 +660,7 @@ var require_option = __commonJS((exports) => {
   exports.DualOptions = DualOptions;
 });
 
-// node_modules/commander/lib/suggestSimilar.js
+// ../../node_modules/commander/lib/suggestSimilar.js
 var require_suggestSimilar = __commonJS((exports) => {
   var maxDistance = 3;
   function editDistance(a, b) {
@@ -733,7 +733,7 @@ var require_suggestSimilar = __commonJS((exports) => {
   exports.suggestSimilar = suggestSimilar;
 });
 
-// node_modules/commander/lib/command.js
+// ../../node_modules/commander/lib/command.js
 var require_command = __commonJS((exports) => {
   var EventEmitter = __require("events").EventEmitter;
   var childProcess = __require("child_process");
@@ -2043,7 +2043,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
   exports.useColor = useColor;
 });
 
-// node_modules/commander/index.js
+// ../../node_modules/commander/index.js
 var require_commander = __commonJS((exports) => {
   var { Argument } = require_argument();
   var { Command } = require_command();
@@ -2273,7 +2273,7 @@ var init_catalog = __esm(() => {
   ];
 });
 
-// node_modules/react/cjs/react.development.js
+// ../../node_modules/react/cjs/react.development.js
 var require_react_development = __commonJS((exports, module) => {
   if (true) {
     (function() {
@@ -4076,7 +4076,7 @@ Check the top-level render call using <` + parentName + ">.";
   }
 });
 
-// node_modules/react/index.js
+// ../../node_modules/react/index.js
 var require_react = __commonJS((exports, module) => {
   var react_development = __toESM(require_react_development());
   if (false) {} else {
@@ -4084,7 +4084,7 @@ var require_react = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/es-toolkit/dist/function/debounce.mjs
+// ../../node_modules/es-toolkit/dist/function/debounce.mjs
 function debounce(func, debounceMs, { signal, edges } = {}) {
   let pendingThis = undefined;
   let pendingArgs = null;
@@ -4147,7 +4147,7 @@ function debounce(func, debounceMs, { signal, edges } = {}) {
 }
 var init_debounce = () => {};
 
-// node_modules/es-toolkit/dist/compat/function/debounce.mjs
+// ../../node_modules/es-toolkit/dist/compat/function/debounce.mjs
 function debounce2(func, debounceMs = 0, options = {}) {
   if (typeof options !== "object") {
     options = {};
@@ -4194,7 +4194,7 @@ var init_debounce2 = __esm(() => {
   init_debounce();
 });
 
-// node_modules/es-toolkit/dist/compat/function/throttle.mjs
+// ../../node_modules/es-toolkit/dist/compat/function/throttle.mjs
 function throttle(func, throttleMs = 0, options = {}) {
   const { leading = true, trailing = true } = options;
   return debounce2(func, throttleMs, {
@@ -4207,12 +4207,12 @@ var init_throttle = __esm(() => {
   init_debounce2();
 });
 
-// node_modules/es-toolkit/dist/compat/index.mjs
+// ../../node_modules/es-toolkit/dist/compat/index.mjs
 var init_compat = __esm(() => {
   init_throttle();
 });
 
-// node_modules/environment/index.js
+// ../../node_modules/environment/index.js
 var isBrowser, isNode, isBun, isDeno, isElectron, isJsDom, isWebWorker, isDedicatedWorker, isSharedWorker, isServiceWorker, platform, isMacOs, isWindows, isLinux, isIos, isAndroid;
 var init_environment = __esm(() => {
   isBrowser = globalThis.window?.document !== undefined;
@@ -4233,7 +4233,7 @@ var init_environment = __esm(() => {
   isAndroid = platform === "Android" || globalThis.navigator?.platform === "Android" || globalThis.navigator?.userAgent?.includes(" Android ") === true || globalThis.process?.platform === "android";
 });
 
-// node_modules/ansi-escapes/base.js
+// ../../node_modules/ansi-escapes/base.js
 var exports_base = {};
 __export(exports_base, {
   synchronizedOutput: () => synchronizedOutput,
@@ -4401,13 +4401,13 @@ var init_base = __esm(() => {
   };
 });
 
-// node_modules/ansi-escapes/index.js
+// ../../node_modules/ansi-escapes/index.js
 var init_ansi_escapes = __esm(() => {
   init_base();
   init_base();
 });
 
-// node_modules/is-in-ci/index.js
+// ../../node_modules/is-in-ci/index.js
 import { env } from "process";
 var isInCi, is_in_ci_default;
 var init_is_in_ci = __esm(() => {
@@ -4415,7 +4415,7 @@ var init_is_in_ci = __esm(() => {
   is_in_ci_default = isInCi;
 });
 
-// node_modules/auto-bind/index.js
+// ../../node_modules/auto-bind/index.js
 function autoBind(self2, { include, exclude } = {}) {
   const filter = (key) => {
     const match = (pattern) => typeof pattern === "string" ? key === pattern : pattern.test(key);
@@ -4448,7 +4448,7 @@ var getAllProperties = (object) => {
   return properties;
 };
 
-// node_modules/signal-exit/signals.js
+// ../../node_modules/signal-exit/signals.js
 var require_signals = __commonJS((exports, module) => {
   module.exports = [
     "SIGABRT",
@@ -4465,7 +4465,7 @@ var require_signals = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/signal-exit/index.js
+// ../../node_modules/signal-exit/index.js
 var require_signal_exit = __commonJS((exports, module) => {
   var process3 = global.process;
   var processOk = function(process4) {
@@ -4515,7 +4515,7 @@ var require_signal_exit = __commonJS((exports, module) => {
       emitter.on(ev, cb);
       return remove;
     };
-    unload = function unload() {
+    unload = function unload2() {
       if (!loaded || !processOk(global.process)) {
         return;
       }
@@ -4530,7 +4530,7 @@ var require_signal_exit = __commonJS((exports, module) => {
       emitter.count -= 1;
     };
     module.exports.unload = unload;
-    emit = function emit(event, code, signal) {
+    emit = function emit2(event, code, signal) {
       if (emitter.emitted[event]) {
         return;
       }
@@ -4559,7 +4559,7 @@ var require_signal_exit = __commonJS((exports, module) => {
       return signals;
     };
     loaded = false;
-    load = function load() {
+    load = function load2() {
       if (loaded || !processOk(global.process)) {
         return;
       }
@@ -4578,7 +4578,7 @@ var require_signal_exit = __commonJS((exports, module) => {
     };
     module.exports.load = load;
     originalProcessReallyExit = process3.reallyExit;
-    processReallyExit = function processReallyExit(code) {
+    processReallyExit = function processReallyExit2(code) {
       if (!processOk(global.process)) {
         return;
       }
@@ -4588,7 +4588,7 @@ var require_signal_exit = __commonJS((exports, module) => {
       originalProcessReallyExit.call(process3, process3.exitCode);
     };
     originalProcessEmit = process3.emit;
-    processEmit = function processEmit(ev, arg) {
+    processEmit = function processEmit2(ev, arg) {
       if (ev === "exit" && processOk(global.process)) {
         if (arg !== undefined) {
           process3.exitCode = arg;
@@ -4618,7 +4618,7 @@ var require_signal_exit = __commonJS((exports, module) => {
   var processEmit;
 });
 
-// node_modules/patch-console/dist/index.js
+// ../../node_modules/patch-console/dist/index.js
 import { PassThrough } from "stream";
 var consoleMethods, originalMethods, patchConsole = (callback) => {
   const stdout = new PassThrough;
@@ -4666,7 +4666,7 @@ var init_dist = __esm(() => {
   dist_default = patchConsole;
 });
 
-// node_modules/yoga-layout/dist/binaries/yoga-wasm-base64-esm.js
+// ../../node_modules/yoga-layout/dist/binaries/yoga-wasm-base64-esm.js
 var loadYoga, yoga_wasm_base64_esm_default;
 var init_yoga_wasm_base64_esm = __esm(() => {
   loadYoga = (() => {
@@ -5974,7 +5974,7 @@ var init_yoga_wasm_base64_esm = __esm(() => {
   yoga_wasm_base64_esm_default = loadYoga;
 });
 
-// node_modules/yoga-layout/dist/src/generated/YGEnums.js
+// ../../node_modules/yoga-layout/dist/src/generated/YGEnums.js
 var Align, BoxSizing, Dimension, Direction, Display, Edge, Errata, ExperimentalFeature, FlexDirection, Gutter, Justify, LogLevel, MeasureMode, NodeType, Overflow, PositionType, Unit, Wrap, constants, YGEnums_default;
 var init_YGEnums = __esm(() => {
   Align = /* @__PURE__ */ function(Align2) {
@@ -6180,7 +6180,7 @@ var init_YGEnums = __esm(() => {
   YGEnums_default = constants;
 });
 
-// node_modules/yoga-layout/dist/src/wrapAssembly.js
+// ../../node_modules/yoga-layout/dist/src/wrapAssembly.js
 function wrapAssembly(lib) {
   function patch(prototype, name, fn) {
     const original = prototype[name];
@@ -6286,7 +6286,7 @@ var init_wrapAssembly = __esm(() => {
   init_YGEnums();
 });
 
-// node_modules/yoga-layout/dist/src/index.js
+// ../../node_modules/yoga-layout/dist/src/index.js
 var Yoga, src_default;
 var init_src = __esm(async () => {
   init_yoga_wasm_base64_esm();
@@ -6296,7 +6296,7 @@ var init_src = __esm(async () => {
   src_default = Yoga;
 });
 
-// node_modules/scheduler/cjs/scheduler.development.js
+// ../../node_modules/scheduler/cjs/scheduler.development.js
 var require_scheduler_development = __commonJS((exports) => {
   if (true) {
     (function() {
@@ -6739,7 +6739,7 @@ var require_scheduler_development = __commonJS((exports) => {
   }
 });
 
-// node_modules/scheduler/index.js
+// ../../node_modules/scheduler/index.js
 var require_scheduler = __commonJS((exports, module) => {
   var scheduler_development = __toESM(require_scheduler_development());
   if (false) {} else {
@@ -6747,7 +6747,7 @@ var require_scheduler = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/react-reconciler/cjs/react-reconciler.development.js
+// ../../node_modules/react-reconciler/cjs/react-reconciler.development.js
 var require_react_reconciler_development = __commonJS((exports, module) => {
   var React = __toESM(require_react());
   var Scheduler = __toESM(require_scheduler());
@@ -21493,14 +21493,14 @@ Check the render method of \`` + ownerName + "`.";
   }
 });
 
-// node_modules/react-reconciler/index.js
+// ../../node_modules/react-reconciler/index.js
 var require_react_reconciler = __commonJS((exports, module) => {
   if (false) {} else {
     module.exports = require_react_reconciler_development();
   }
 });
 
-// node_modules/react-reconciler/cjs/react-reconciler-constants.development.js
+// ../../node_modules/react-reconciler/cjs/react-reconciler-constants.development.js
 var require_react_reconciler_constants_development = __commonJS((exports) => {
   if (true) {
     (function() {
@@ -21524,14 +21524,14 @@ var require_react_reconciler_constants_development = __commonJS((exports) => {
   }
 });
 
-// node_modules/react-reconciler/constants.js
+// ../../node_modules/react-reconciler/constants.js
 var require_constants = __commonJS((exports, module) => {
   if (false) {} else {
     module.exports = require_react_reconciler_constants_development();
   }
 });
 
-// node_modules/ansi-regex/index.js
+// ../../node_modules/ansi-regex/index.js
 function ansiRegex({ onlyFirst = false } = {}) {
   const ST = "(?:\\u0007|\\u001B\\u005C|\\u009C)";
   const osc = `(?:\\u001B\\][\\s\\S]*?${ST})`;
@@ -21540,7 +21540,7 @@ function ansiRegex({ onlyFirst = false } = {}) {
   return new RegExp(pattern, onlyFirst ? undefined : "g");
 }
 
-// node_modules/strip-ansi/index.js
+// ../../node_modules/strip-ansi/index.js
 function stripAnsi(string) {
   if (typeof string !== "string") {
     throw new TypeError(`Expected a \`string\`, got \`${typeof string}\``);
@@ -21555,7 +21555,7 @@ var init_strip_ansi = __esm(() => {
   regex = ansiRegex();
 });
 
-// node_modules/get-east-asian-width/lookup-data.js
+// ../../node_modules/get-east-asian-width/lookup-data.js
 var ambiguousRanges, fullwidthRanges, halfwidthRanges, narrowRanges, wideRanges;
 var init_lookup_data = __esm(() => {
   ambiguousRanges = [161, 161, 164, 164, 167, 168, 170, 170, 173, 174, 176, 180, 182, 186, 188, 191, 198, 198, 208, 208, 215, 216, 222, 225, 230, 230, 232, 234, 236, 237, 240, 240, 242, 243, 247, 250, 252, 252, 254, 254, 257, 257, 273, 273, 275, 275, 283, 283, 294, 295, 299, 299, 305, 307, 312, 312, 319, 322, 324, 324, 328, 331, 333, 333, 338, 339, 358, 359, 363, 363, 462, 462, 464, 464, 466, 466, 468, 468, 470, 470, 472, 472, 474, 474, 476, 476, 593, 593, 609, 609, 708, 708, 711, 711, 713, 715, 717, 717, 720, 720, 728, 731, 733, 733, 735, 735, 768, 879, 913, 929, 931, 937, 945, 961, 963, 969, 1025, 1025, 1040, 1103, 1105, 1105, 8208, 8208, 8211, 8214, 8216, 8217, 8220, 8221, 8224, 8226, 8228, 8231, 8240, 8240, 8242, 8243, 8245, 8245, 8251, 8251, 8254, 8254, 8308, 8308, 8319, 8319, 8321, 8324, 8364, 8364, 8451, 8451, 8453, 8453, 8457, 8457, 8467, 8467, 8470, 8470, 8481, 8482, 8486, 8486, 8491, 8491, 8531, 8532, 8539, 8542, 8544, 8555, 8560, 8569, 8585, 8585, 8592, 8601, 8632, 8633, 8658, 8658, 8660, 8660, 8679, 8679, 8704, 8704, 8706, 8707, 8711, 8712, 8715, 8715, 8719, 8719, 8721, 8721, 8725, 8725, 8730, 8730, 8733, 8736, 8739, 8739, 8741, 8741, 8743, 8748, 8750, 8750, 8756, 8759, 8764, 8765, 8776, 8776, 8780, 8780, 8786, 8786, 8800, 8801, 8804, 8807, 8810, 8811, 8814, 8815, 8834, 8835, 8838, 8839, 8853, 8853, 8857, 8857, 8869, 8869, 8895, 8895, 8978, 8978, 9312, 9449, 9451, 9547, 9552, 9587, 9600, 9615, 9618, 9621, 9632, 9633, 9635, 9641, 9650, 9651, 9654, 9655, 9660, 9661, 9664, 9665, 9670, 9672, 9675, 9675, 9678, 9681, 9698, 9701, 9711, 9711, 9733, 9734, 9737, 9737, 9742, 9743, 9756, 9756, 9758, 9758, 9792, 9792, 9794, 9794, 9824, 9825, 9827, 9829, 9831, 9834, 9836, 9837, 9839, 9839, 9886, 9887, 9919, 9919, 9926, 9933, 9935, 9939, 9941, 9953, 9955, 9955, 9960, 9961, 9963, 9969, 9972, 9972, 9974, 9977, 9979, 9980, 9982, 9983, 10045, 10045, 10102, 10111, 11094, 11097, 12872, 12879, 57344, 63743, 65024, 65039, 65533, 65533, 127232, 127242, 127248, 127277, 127280, 127337, 127344, 127373, 127375, 127376, 127387, 127404, 917760, 917999, 983040, 1048573, 1048576, 1114109];
@@ -21565,7 +21565,7 @@ var init_lookup_data = __esm(() => {
   wideRanges = [4352, 4447, 8986, 8987, 9001, 9002, 9193, 9196, 9200, 9200, 9203, 9203, 9725, 9726, 9748, 9749, 9776, 9783, 9800, 9811, 9855, 9855, 9866, 9871, 9875, 9875, 9889, 9889, 9898, 9899, 9917, 9918, 9924, 9925, 9934, 9934, 9940, 9940, 9962, 9962, 9970, 9971, 9973, 9973, 9978, 9978, 9981, 9981, 9989, 9989, 9994, 9995, 10024, 10024, 10060, 10060, 10062, 10062, 10067, 10069, 10071, 10071, 10133, 10135, 10160, 10160, 10175, 10175, 11035, 11036, 11088, 11088, 11093, 11093, 11904, 11929, 11931, 12019, 12032, 12245, 12272, 12287, 12289, 12350, 12353, 12438, 12441, 12543, 12549, 12591, 12593, 12686, 12688, 12773, 12783, 12830, 12832, 12871, 12880, 42124, 42128, 42182, 43360, 43388, 44032, 55203, 63744, 64255, 65040, 65049, 65072, 65106, 65108, 65126, 65128, 65131, 94176, 94180, 94192, 94198, 94208, 101589, 101631, 101662, 101760, 101874, 110576, 110579, 110581, 110587, 110589, 110590, 110592, 110882, 110898, 110898, 110928, 110930, 110933, 110933, 110948, 110951, 110960, 111355, 119552, 119638, 119648, 119670, 126980, 126980, 127183, 127183, 127374, 127374, 127377, 127386, 127488, 127490, 127504, 127547, 127552, 127560, 127568, 127569, 127584, 127589, 127744, 127776, 127789, 127797, 127799, 127868, 127870, 127891, 127904, 127946, 127951, 127955, 127968, 127984, 127988, 127988, 127992, 128062, 128064, 128064, 128066, 128252, 128255, 128317, 128331, 128334, 128336, 128359, 128378, 128378, 128405, 128406, 128420, 128420, 128507, 128591, 128640, 128709, 128716, 128716, 128720, 128722, 128725, 128728, 128732, 128735, 128747, 128748, 128756, 128764, 128992, 129003, 129008, 129008, 129292, 129338, 129340, 129349, 129351, 129535, 129648, 129660, 129664, 129674, 129678, 129734, 129736, 129736, 129741, 129756, 129759, 129770, 129775, 129784, 131072, 196605, 196608, 262141];
 });
 
-// node_modules/get-east-asian-width/utilities.js
+// ../../node_modules/get-east-asian-width/utilities.js
 var isInRange = (ranges, codePoint) => {
   let low = 0;
   let high = Math.floor(ranges.length / 2) - 1;
@@ -21583,7 +21583,7 @@ var isInRange = (ranges, codePoint) => {
   return false;
 };
 
-// node_modules/get-east-asian-width/lookup.js
+// ../../node_modules/get-east-asian-width/lookup.js
 function findWideFastPathRange(ranges) {
   let fastPathStart = ranges[0];
   let fastPathEnd = ranges[1];
@@ -21634,7 +21634,7 @@ var init_lookup = __esm(() => {
   [wideFastPathStart, wideFastPathEnd] = findWideFastPathRange(wideRanges);
 });
 
-// node_modules/get-east-asian-width/index.js
+// ../../node_modules/get-east-asian-width/index.js
 function validate(codePoint) {
   if (!Number.isSafeInteger(codePoint)) {
     throw new TypeError(`Expected a code point, got \`${typeof codePoint}\`.`);
@@ -21652,12 +21652,12 @@ var init_get_east_asian_width = __esm(() => {
   init_lookup();
 });
 
-// node_modules/emoji-regex/index.mjs
+// ../../node_modules/emoji-regex/index.mjs
 var emoji_regex_default = () => {
   return /[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26D3\uFE0F?(?:\u200D\uD83D\uDCA5)?|\u26F9(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF43\uDF45-\uDF4A\uDF4C-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDF44(?:\u200D\uD83D\uDFEB)?|\uDF4B(?:\u200D\uD83D\uDFE9)?|\uDFC3(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E-\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4\uDEB5](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC25\uDC27-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE41\uDE43\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED8\uDEDC-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC26(?:\u200D(?:\u2B1B|\uD83D\uDD25))?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFE])))?))?|\uDD75(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?|\uDE42(?:\u200D[\u2194\u2195]\uFE0F?)?|\uDEB6(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF8](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3C-\uDD3E\uDDB8\uDDB9\uDDCD\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE7C\uDE80-\uDE8A\uDE8E-\uDEC2\uDEC6\uDEC8\uDECD-\uDEDC\uDEDF-\uDEEA\uDEEF]|\uDDCE(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1|\uDDD1\u200D\uD83E\uDDD2(?:\u200D\uD83E\uDDD2)?|\uDDD2(?:\u200D\uD83E\uDDD2)?))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?)/g;
 };
 
-// node_modules/string-width/index.js
+// ../../node_modules/string-width/index.js
 function stringWidth(string, options = {}) {
   if (typeof string !== "string" || string.length === 0) {
     return 0;
@@ -21710,7 +21710,7 @@ var init_string_width = __esm(() => {
   defaultIgnorableCodePointRegex = /^\p{Default_Ignorable_Code_Point}$/u;
 });
 
-// node_modules/widest-line/index.js
+// ../../node_modules/widest-line/index.js
 function widestLine(string) {
   let lineWidth = 0;
   for (const line of string.split(`
@@ -21723,7 +21723,7 @@ var init_widest_line = __esm(() => {
   init_string_width();
 });
 
-// node_modules/ink/build/measure-text.js
+// ../../node_modules/ink/build/measure-text.js
 var cache, measureText = (text) => {
   if (text.length === 0) {
     return {
@@ -21747,7 +21747,7 @@ var init_measure_text = __esm(() => {
   measure_text_default = measureText;
 });
 
-// node_modules/ansi-styles/index.js
+// ../../node_modules/ansi-styles/index.js
 function assembleStyles() {
   const codes = new Map;
   for (const [groupName, group] of Object.entries(styles)) {
@@ -21923,7 +21923,7 @@ var init_ansi_styles = __esm(() => {
   ansi_styles_default = ansiStyles;
 });
 
-// node_modules/wrap-ansi/index.js
+// ../../node_modules/wrap-ansi/index.js
 function wrapAnsi(string, columns, options) {
   return String(string).normalize().replaceAll(`\r
 `, `
@@ -22080,7 +22080,7 @@ var init_wrap_ansi = __esm(() => {
   ANSI_ESCAPE_LINK = `${ANSI_OSC}8;;`;
 });
 
-// node_modules/is-fullwidth-code-point/index.js
+// ../../node_modules/is-fullwidth-code-point/index.js
 function isFullwidthCodePoint(codePoint) {
   if (!Number.isInteger(codePoint)) {
     return false;
@@ -22088,7 +22088,7 @@ function isFullwidthCodePoint(codePoint) {
   return codePoint >= 4352 && (codePoint <= 4447 || codePoint === 9001 || codePoint === 9002 || 11904 <= codePoint && codePoint <= 12871 && codePoint !== 12351 || 12880 <= codePoint && codePoint <= 19903 || 19968 <= codePoint && codePoint <= 42182 || 43360 <= codePoint && codePoint <= 43388 || 44032 <= codePoint && codePoint <= 55203 || 63744 <= codePoint && codePoint <= 64255 || 65040 <= codePoint && codePoint <= 65049 || 65072 <= codePoint && codePoint <= 65131 || 65281 <= codePoint && codePoint <= 65376 || 65504 <= codePoint && codePoint <= 65510 || 110592 <= codePoint && codePoint <= 110593 || 127488 <= codePoint && codePoint <= 127569 || 131072 <= codePoint && codePoint <= 262141);
 }
 
-// node_modules/cli-truncate/node_modules/slice-ansi/index.js
+// ../../node_modules/cli-truncate/node_modules/slice-ansi/index.js
 function sliceAnsi(string, begin, end) {
   const characters = [...string];
   const ansiCodes = [];
@@ -22173,7 +22173,7 @@ var init_slice_ansi = __esm(() => {
   ];
 });
 
-// node_modules/cli-truncate/index.js
+// ../../node_modules/cli-truncate/index.js
 function getIndexOfNearestSpace(string, wantedIndex, shouldSearchRight) {
   if (string.charAt(wantedIndex) === " ") {
     return wantedIndex;
@@ -22249,7 +22249,7 @@ var init_cli_truncate = __esm(() => {
   init_string_width();
 });
 
-// node_modules/ink/build/wrap-text.js
+// ../../node_modules/ink/build/wrap-text.js
 var cache2, wrapText = (text, maxWidth, wrapType) => {
   const cacheKey = text + String(maxWidth) + String(wrapType);
   const cachedText = cache2[cacheKey];
@@ -22283,7 +22283,7 @@ var init_wrap_text = __esm(() => {
   wrap_text_default = wrapText;
 });
 
-// node_modules/ink/build/squash-text-nodes.js
+// ../../node_modules/ink/build/squash-text-nodes.js
 var squashTextNodes = (node) => {
   let text = "";
   for (let index = 0;index < node.childNodes.length; index++) {
@@ -22310,7 +22310,7 @@ var init_squash_text_nodes = __esm(() => {
   squash_text_nodes_default = squashTextNodes;
 });
 
-// node_modules/ink/build/dom.js
+// ../../node_modules/ink/build/dom.js
 var createNode = (nodeName) => {
   const node = {
     nodeName,
@@ -22416,7 +22416,7 @@ var init_dom = __esm(async () => {
   await init_src();
 });
 
-// node_modules/ink/build/styles.js
+// ../../node_modules/ink/build/styles.js
 var applyPositionStyles = (node, style) => {
   if ("position" in style) {
     node.setPositionType(style.position === "absolute" ? src_default.POSITION_TYPE_ABSOLUTE : src_default.POSITION_TYPE_RELATIVE);
@@ -22632,7 +22632,7 @@ var init_styles = __esm(async () => {
   styles_default = styles2;
 });
 
-// node_modules/ink/build/devtools-window-polyfill.js
+// ../../node_modules/ink/build/devtools-window-polyfill.js
 import ws from "ws";
 var customGlobal;
 var init_devtools_window_polyfill = __esm(() => {
@@ -22685,7 +22685,7 @@ var init_devtools_window_polyfill = __esm(() => {
   ];
 });
 
-// node_modules/react-devtools-core/dist/backend.js
+// ../../node_modules/react-devtools-core/dist/backend.js
 var require_backend = __commonJS((exports, module) => {
   (function webpackUniversalModuleDefinition(root, factory) {
     if (typeof exports === "object" && typeof module === "object")
@@ -22704,11 +22704,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -23117,11 +23117,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -23226,11 +23226,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -23711,11 +23711,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -23881,11 +23881,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -23905,7 +23905,7 @@ var require_backend = __commonJS((exports, module) => {
           var objectProto = Object.prototype;
           var objectToString = objectProto.toString;
           var { max: nativeMax, min: nativeMin } = Math;
-          var now = function now() {
+          var now = function now2() {
             return root.Date.now();
           };
           function debounce3(func, wait, options) {
@@ -24042,11 +24042,11 @@ var require_backend = __commonJS((exports, module) => {
           var hasSymbol = typeof Symbol === "function" && process3.env._nodeLRUCacheForceNoSymbol !== "1";
           var makeSymbol;
           if (hasSymbol) {
-            makeSymbol = function makeSymbol(key) {
+            makeSymbol = function makeSymbol2(key) {
               return Symbol(key);
             };
           } else {
-            makeSymbol = function makeSymbol(key) {
+            makeSymbol = function makeSymbol2(key) {
               return "_" + key;
             };
           }
@@ -24097,7 +24097,7 @@ var require_backend = __commonJS((exports, module) => {
               this[MAX] = mL;
               trim(this);
             },
-            get: function get() {
+            get: function get2() {
               return this[MAX];
             },
             enumerable: true
@@ -24106,7 +24106,7 @@ var require_backend = __commonJS((exports, module) => {
             set: function set(allowStale) {
               this[ALLOW_STALE] = !!allowStale;
             },
-            get: function get() {
+            get: function get2() {
               return this[ALLOW_STALE];
             },
             enumerable: true
@@ -24119,7 +24119,7 @@ var require_backend = __commonJS((exports, module) => {
               this[MAX_AGE] = mA;
               trim(this);
             },
-            get: function get() {
+            get: function get2() {
               return this[MAX_AGE];
             },
             enumerable: true
@@ -24139,19 +24139,19 @@ var require_backend = __commonJS((exports, module) => {
               }
               trim(this);
             },
-            get: function get() {
+            get: function get2() {
               return this[LENGTH_CALCULATOR];
             },
             enumerable: true
           });
           Object.defineProperty(LRUCache.prototype, "length", {
-            get: function get() {
+            get: function get2() {
               return this[LENGTH];
             },
             enumerable: true
           });
           Object.defineProperty(LRUCache.prototype, "itemCount", {
-            get: function get() {
+            get: function get2() {
               return this[LRU_LIST].length;
             },
             enumerable: true
@@ -24666,7 +24666,7 @@ var require_backend = __commonJS((exports, module) => {
             get: function get() {
               return this._data.size;
             },
-            set: function set(n) {},
+            set: function set2(n) {},
             enumerable: true,
             configurable: true
           });
@@ -24703,11 +24703,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -24848,7 +24848,7 @@ var require_backend = __commonJS((exports, module) => {
           } else {
             module2.exports = function inherits(ctor, superCtor) {
               ctor.super_ = superCtor;
-              var TempCtor = function TempCtor() {};
+              var TempCtor = function TempCtor2() {};
               TempCtor.prototype = superCtor.prototype;
               ctor.prototype = new TempCtor;
               ctor.prototype.constructor = ctor;
@@ -24859,11 +24859,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -24878,11 +24878,11 @@ var require_backend = __commonJS((exports, module) => {
           function _typeof(obj) {
             "@babel/helpers - typeof";
             if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return typeof obj2;
               };
             } else {
-              _typeof = function _typeof(obj2) {
+              _typeof = function _typeof2(obj2) {
                 return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
               };
             }
@@ -25849,7 +25849,7 @@ var require_backend = __commonJS((exports, module) => {
             return sessionStorage.setItem(key, value);
           } catch (error) {}
         }
-        var simpleIsEqual = function simpleIsEqual(a, b) {
+        var simpleIsEqual = function simpleIsEqual2(a, b) {
           return a === b;
         };
         function esm(resultFn) {
@@ -25858,10 +25858,10 @@ var require_backend = __commonJS((exports, module) => {
           var lastArgs = [];
           var lastResult = undefined;
           var calledOnce = false;
-          var isNewArgEqualToLast = function isNewArgEqualToLast(newArg, index) {
+          var isNewArgEqualToLast = function isNewArgEqualToLast2(newArg, index) {
             return isEqual(newArg, lastArgs[index]);
           };
-          var result = function result() {
+          var result = function result2() {
             for (var _len = arguments.length, newArgs = Array(_len), _key = 0;_key < _len; _key++) {
               newArgs[_key] = arguments[_key];
             }
@@ -26477,11 +26477,11 @@ var require_backend = __commonJS((exports, module) => {
         function _typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            _typeof = function _typeof(obj2) {
+            _typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            _typeof = function _typeof(obj2) {
+            _typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -26574,11 +26574,11 @@ var require_backend = __commonJS((exports, module) => {
         function esm_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            esm_typeof = function _typeof(obj2) {
+            esm_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            esm_typeof = function _typeof(obj2) {
+            esm_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -26643,7 +26643,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           if (Array.isArray(arr))
             return arr;
         }
-        var compareVersions = function compareVersions(v1, v2) {
+        var compareVersions = function compareVersions2(v1, v2) {
           var n1 = validateAndParse(v1);
           var n2 = validateAndParse(v2);
           var p1 = n1.pop();
@@ -26658,15 +26658,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }
           return 0;
         };
-        var validate2 = function validate(version) {
+        var validate2 = function validate3(version) {
           return typeof version === "string" && /^[v\d]/.test(version) && semver.test(version);
         };
-        var compare = function compare(v1, v2, operator) {
+        var compare = function compare2(v1, v2, operator) {
           assertValidOperator(operator);
           var res = compareVersions(v1, v2);
           return operatorResMap[operator].includes(res);
         };
-        var satisfies = function satisfies(version, range) {
+        var satisfies = function satisfies2(version, range) {
           var m = range.match(/^([<>=~^]+)/);
           var op = m ? m[1] : "=";
           if (op !== "^" && op !== "~")
@@ -26694,7 +26694,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return true;
         };
         var semver = /^[v^~<>=]*?(\d+)(?:\.([x*]|\d+)(?:\.([x*]|\d+)(?:\.([x*]|\d+))?(?:-([\da-z\-]+(?:\.[\da-z\-]+)*))?(?:\+[\da-z\-]+(?:\.[\da-z\-]+)*)?)?)?$/i;
-        var validateAndParse = function validateAndParse(version) {
+        var validateAndParse = function validateAndParse2(version) {
           if (typeof version !== "string") {
             throw new TypeError("Invalid argument expected string");
           }
@@ -26705,17 +26705,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           match.shift();
           return match;
         };
-        var isWildcard = function isWildcard(s) {
+        var isWildcard = function isWildcard2(s) {
           return s === "*" || s === "x" || s === "X";
         };
-        var tryParse = function tryParse(v) {
+        var tryParse = function tryParse2(v) {
           var n = parseInt(v, 10);
           return isNaN(n) ? v : n;
         };
-        var forceType = function forceType(a, b) {
+        var forceType = function forceType2(a, b) {
           return esm_typeof(a) !== esm_typeof(b) ? [String(a), String(b)] : [a, b];
         };
-        var compareStrings = function compareStrings(a, b) {
+        var compareStrings = function compareStrings2(a, b) {
           if (isWildcard(a) || isWildcard(b))
             return 0;
           var _forceType = forceType(tryParse(a), tryParse(b)), _forceType2 = _slicedToArray(_forceType, 2), ap = _forceType2[0], bp = _forceType2[1];
@@ -26725,7 +26725,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             return -1;
           return 0;
         };
-        var compareSegments = function compareSegments(a, b) {
+        var compareSegments = function compareSegments2(a, b) {
           for (var i = 0;i < Math.max(a.length, b.length); i++) {
             var r = compareStrings(a[i] || "0", b[i] || "0");
             if (r !== 0)
@@ -26741,7 +26741,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           "<": [-1]
         };
         var allowedOperators = Object.keys(operatorResMap);
-        var assertValidOperator = function assertValidOperator(op) {
+        var assertValidOperator = function assertValidOperator2(op) {
           if (typeof op !== "string") {
             throw new TypeError("Invalid operator type, expected string but got ".concat(esm_typeof(op)));
           }
@@ -26755,11 +26755,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function ReactSymbols_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            ReactSymbols_typeof = function _typeof(obj2) {
+            ReactSymbols_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            ReactSymbols_typeof = function _typeof(obj2) {
+            ReactSymbols_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -26822,11 +26822,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function utils_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            utils_typeof = function _typeof(obj2) {
+            utils_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            utils_typeof = function _typeof(obj2) {
+            utils_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -26885,7 +26885,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function getAllEnumerableKeys(obj) {
           var keys = new Set;
           var current = obj;
-          var _loop = function _loop() {
+          var _loop = function _loop2() {
             var currentKeys = [].concat(_toConsumableArray(Object.keys(current)), _toConsumableArray(Object.getOwnPropertySymbols(current)));
             var descriptors = Object.getOwnPropertyDescriptors(current);
             currentKeys.forEach(function(key) {
@@ -27440,7 +27440,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
           }
         }
-        var isPlainObject = function isPlainObject(object) {
+        var isPlainObject = function isPlainObject2(object) {
           var objectPrototype = Object.getPrototypeOf(object);
           if (!objectPrototype)
             return true;
@@ -27843,11 +27843,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function backend_utils_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            backend_utils_typeof = function _typeof(obj2) {
+            backend_utils_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            backend_utils_typeof = function _typeof(obj2) {
+            backend_utils_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -28619,11 +28619,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function DevToolsComponentStackFrame_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            DevToolsComponentStackFrame_typeof = function _typeof(obj2) {
+            DevToolsComponentStackFrame_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            DevToolsComponentStackFrame_typeof = function _typeof(obj2) {
+            DevToolsComponentStackFrame_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -28663,7 +28663,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           disableLogs();
           try {
             if (construct) {
-              var Fake = function Fake() {
+              var Fake = function Fake2() {
                 throw Error();
               };
               Object.defineProperty(Fake.prototype, "props", {
@@ -28887,11 +28887,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function profilingHooks_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            profilingHooks_typeof = function _typeof(obj2) {
+            profilingHooks_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            profilingHooks_typeof = function _typeof(obj2) {
+            profilingHooks_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -29661,7 +29661,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               if (it)
                 o = it;
               var i = 0;
-              var F = function F() {};
+              var F = function F2() {};
               return { s: F, n: function n() {
                 if (i >= o.length)
                   return { done: true };
@@ -29717,11 +29717,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function renderer_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            renderer_typeof = function _typeof(obj2) {
+            renderer_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            renderer_typeof = function _typeof(obj2) {
+            renderer_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -30162,7 +30162,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }
           registerRenderer(renderer, onErrorOrWarning);
           patchConsoleUsingWindowValues();
-          var debug2 = function debug(name, fiber, parentFiber) {
+          var debug2 = function debug3(name, fiber, parentFiber) {
             var extraString = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
             if (__DEBUG__) {
               var displayName = fiber.tag + ":" + (getDisplayNameForFiber(fiber) || "null");
@@ -32412,7 +32412,7 @@ The error thrown in the component is:
               isFullMatch: trackedPathMatchDepth === trackedPath.length - 1
             };
           }
-          var formatPriorityLevel = function formatPriorityLevel(priorityLevel) {
+          var formatPriorityLevel = function formatPriorityLevel2(priorityLevel) {
             if (priorityLevel == null) {
               return "Unknown";
             }
@@ -32500,7 +32500,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               if (it)
                 o = it;
               var i = 0;
-              var F = function F() {};
+              var F = function F2() {};
               return { s: F, n: function n() {
                 if (i >= o.length)
                   return { done: true };
@@ -32627,7 +32627,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               return;
             }
             var originalConsoleMethods = {};
-            unpatchFn = function unpatchFn() {
+            unpatchFn = function unpatchFn2() {
               for (var _method2 in originalConsoleMethods) {
                 try {
                   targetConsole[_method2] = originalConsoleMethods[_method2];
@@ -32637,7 +32637,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             OVERRIDE_CONSOLE_METHODS.forEach(function(method2) {
               try {
                 var originalMethod = originalConsoleMethods[method2] = targetConsole[method2].__REACT_DEVTOOLS_ORIGINAL_METHOD__ ? targetConsole[method2].__REACT_DEVTOOLS_ORIGINAL_METHOD__ : targetConsole[method2];
-                var overrideMethod = function overrideMethod() {
+                var overrideMethod = function overrideMethod2() {
                   var shouldAppendWarningStack = false;
                   for (var _len = arguments.length, args = new Array(_len), _key = 0;_key < _len; _key++) {
                     args[_key] = arguments[_key];
@@ -32715,7 +32715,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               return;
             }
             var originalConsoleMethods = {};
-            unpatchForStrictModeFn = function unpatchForStrictModeFn() {
+            unpatchForStrictModeFn = function unpatchForStrictModeFn2() {
               for (var _method3 in originalConsoleMethods) {
                 try {
                   targetConsole[_method3] = originalConsoleMethods[_method3];
@@ -32725,7 +32725,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             overrideConsoleMethods.forEach(function(method2) {
               try {
                 var originalMethod = originalConsoleMethods[method2] = targetConsole[method2].__REACT_DEVTOOLS_STRICT_MODE_ORIGINAL_METHOD__ ? targetConsole[method2].__REACT_DEVTOOLS_STRICT_MODE_ORIGINAL_METHOD__ : targetConsole[method2];
-                var overrideMethod = function overrideMethod() {
+                var overrideMethod = function overrideMethod2() {
                   if (!consoleSettingsRef.hideConsoleLogsInStrictMode) {
                     for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0;_key2 < _len2; _key2++) {
                       args[_key2] = arguments[_key2];
@@ -32788,11 +32788,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function bridge_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            bridge_typeof = function _typeof(obj2) {
+            bridge_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            bridge_typeof = function _typeof(obj2) {
+            bridge_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -32865,7 +32865,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             _setPrototypeOf(subClass, superClass);
         }
         function _setPrototypeOf(o, p) {
-          _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o2, p2) {
+          _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o2, p2) {
             o2.__proto__ = p2;
             return o2;
           };
@@ -32911,7 +32911,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }
         }
         function _getPrototypeOf(o) {
-          _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o2) {
+          _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o2) {
             return o2.__proto__ || Object.getPrototypeOf(o2);
           };
           return _getPrototypeOf(o);
@@ -33070,11 +33070,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function agent_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            agent_typeof = function _typeof(obj2) {
+            agent_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            agent_typeof = function _typeof(obj2) {
+            agent_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -33111,7 +33111,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             agent_setPrototypeOf(subClass, superClass);
         }
         function agent_setPrototypeOf(o, p) {
-          agent_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o2, p2) {
+          agent_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o2, p2) {
             o2.__proto__ = p2;
             return o2;
           };
@@ -33157,7 +33157,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }
         }
         function agent_getPrototypeOf(o) {
-          agent_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o2) {
+          agent_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o2) {
             return o2.__proto__ || Object.getPrototypeOf(o2);
           };
           return agent_getPrototypeOf(o);
@@ -33170,7 +33170,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }
           return obj;
         }
-        var debug = function debug(methodName) {
+        var debug = function debug2(methodName) {
           if (__DEBUG__) {
             var _console;
             for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1;_key < _len; _key++) {
@@ -33659,11 +33659,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function hook_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            hook_typeof = function _typeof(obj2) {
+            hook_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            hook_typeof = function _typeof(obj2) {
+            hook_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -33809,7 +33809,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               return;
             }
             var originalConsoleMethods = {};
-            unpatchFn2 = function unpatchFn() {
+            unpatchFn2 = function unpatchFn3() {
               for (var _method2 in originalConsoleMethods) {
                 try {
                   targetConsole2[_method2] = originalConsoleMethods[_method2];
@@ -33819,7 +33819,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             overrideConsoleMethods.forEach(function(method3) {
               try {
                 var originalMethod = originalConsoleMethods[method3] = targetConsole2[method3].__REACT_DEVTOOLS_STRICT_MODE_ORIGINAL_METHOD__ ? targetConsole2[method3].__REACT_DEVTOOLS_STRICT_MODE_ORIGINAL_METHOD__ : targetConsole2[method3];
-                var overrideMethod = function overrideMethod() {
+                var overrideMethod = function overrideMethod2() {
                   if (!hideConsoleLogsInStrictMode) {
                     var color;
                     switch (method3) {
@@ -34095,11 +34095,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function legacy_renderer_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            legacy_renderer_typeof = function _typeof(obj2) {
+            legacy_renderer_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            legacy_renderer_typeof = function _typeof(obj2) {
+            legacy_renderer_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -34164,26 +34164,26 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           var internalInstanceToRootIDMap = new WeakMap;
           var getInternalIDForNative = null;
           var findNativeNodeForInternalID;
-          var getFiberForNative = function getFiberForNative(node) {
+          var getFiberForNative = function getFiberForNative2(node) {
             return null;
           };
           if (renderer.ComponentTree) {
-            getInternalIDForNative = function getInternalIDForNative(node, findNearestUnfilteredAncestor) {
+            getInternalIDForNative = function getInternalIDForNative2(node, findNearestUnfilteredAncestor) {
               var internalInstance = renderer.ComponentTree.getClosestInstanceFromNode(node);
               return internalInstanceToIDMap.get(internalInstance) || null;
             };
-            findNativeNodeForInternalID = function findNativeNodeForInternalID(id) {
+            findNativeNodeForInternalID = function findNativeNodeForInternalID2(id) {
               var internalInstance = idToInternalInstanceMap.get(id);
               return renderer.ComponentTree.getNodeFromInstance(internalInstance);
             };
-            getFiberForNative = function getFiberForNative(node) {
+            getFiberForNative = function getFiberForNative2(node) {
               return renderer.ComponentTree.getClosestInstanceFromNode(node);
             };
           } else if (renderer.Mount.getID && renderer.Mount.getNode) {
-            getInternalIDForNative = function getInternalIDForNative(node, findNearestUnfilteredAncestor) {
+            getInternalIDForNative = function getInternalIDForNative2(node, findNearestUnfilteredAncestor) {
               return null;
             };
-            findNativeNodeForInternalID = function findNativeNodeForInternalID(id) {
+            findNativeNodeForInternalID = function findNativeNodeForInternalID2(id) {
               return null;
             };
           }
@@ -34789,26 +34789,26 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
             }
           }
-          var getProfilingData = function getProfilingData() {
+          var getProfilingData = function getProfilingData2() {
             throw new Error("getProfilingData not supported by this renderer");
           };
-          var handleCommitFiberRoot = function handleCommitFiberRoot() {
+          var handleCommitFiberRoot = function handleCommitFiberRoot2() {
             throw new Error("handleCommitFiberRoot not supported by this renderer");
           };
-          var handleCommitFiberUnmount = function handleCommitFiberUnmount() {
+          var handleCommitFiberUnmount = function handleCommitFiberUnmount2() {
             throw new Error("handleCommitFiberUnmount not supported by this renderer");
           };
-          var handlePostCommitFiberRoot = function handlePostCommitFiberRoot() {
+          var handlePostCommitFiberRoot = function handlePostCommitFiberRoot2() {
             throw new Error("handlePostCommitFiberRoot not supported by this renderer");
           };
-          var overrideError = function overrideError() {
+          var overrideError = function overrideError2() {
             throw new Error("overrideError not supported by this renderer");
           };
-          var overrideSuspense = function overrideSuspense() {
+          var overrideSuspense = function overrideSuspense2() {
             throw new Error("overrideSuspense not supported by this renderer");
           };
-          var startProfiling = function startProfiling() {};
-          var stopProfiling = function stopProfiling() {};
+          var startProfiling = function startProfiling2() {};
+          var stopProfiling = function stopProfiling2() {};
           function getBestMatchForTrackedPath() {
             return null;
           }
@@ -34892,7 +34892,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             hook2.sub("operations", agent2.onHookOperations),
             hook2.sub("traceUpdates", agent2.onTraceUpdates)
           ];
-          var attachRenderer = function attachRenderer(id, renderer) {
+          var attachRenderer = function attachRenderer2(id, renderer) {
             if (!isMatchingRender(renderer.reconcilerVersion || renderer.version)) {
               return;
             }
@@ -34926,7 +34926,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }));
           hook2.emit("react-devtools", agent2);
           hook2.reactDevtoolsAgent = agent2;
-          var onAgentShutdown = function onAgentShutdown() {
+          var onAgentShutdown = function onAgentShutdown2() {
             subs.forEach(function(fn) {
               return fn();
             });
@@ -35010,11 +35010,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         function setupNativeStyleEditor_typeof(obj) {
           "@babel/helpers - typeof";
           if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-            setupNativeStyleEditor_typeof = function _typeof(obj2) {
+            setupNativeStyleEditor_typeof = function _typeof2(obj2) {
               return typeof obj2;
             };
           } else {
-            setupNativeStyleEditor_typeof = function _typeof(obj2) {
+            setupNativeStyleEditor_typeof = function _typeof2(obj2) {
               return obj2 && typeof Symbol === "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
             };
           }
@@ -35378,7 +35378,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             } else {
               var lazyResolveRNStyle;
               var lazyNativeStyleEditorValidAttributes;
-              var initAfterTick = function initAfterTick() {
+              var initAfterTick = function initAfterTick2() {
                 if (bridge !== null) {
                   setupNativeStyleEditor(bridge, agent2, lazyResolveRNStyle, lazyNativeStyleEditorValidAttributes);
                 }
@@ -35456,7 +35456,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   });
 });
 
-// node_modules/ink/build/devtools.js
+// ../../node_modules/ink/build/devtools.js
 var exports_devtools = {};
 var import_react_devtools_core;
 var init_devtools = __esm(() => {
@@ -35465,7 +35465,7 @@ var init_devtools = __esm(() => {
   import_react_devtools_core.default.connectToDevTools();
 });
 
-// node_modules/ink/build/reconciler.js
+// ../../node_modules/ink/build/reconciler.js
 import process3 from "process";
 var import_react_reconciler, import_constants, diff = (before, after) => {
   if (before === after) {
@@ -35676,7 +35676,7 @@ $ npm install --save-dev react-devtools-core
   });
 });
 
-// node_modules/indent-string/index.js
+// ../../node_modules/indent-string/index.js
 function indentString(string, count = 1, options = {}) {
   const {
     indent = " ",
@@ -35701,7 +35701,7 @@ function indentString(string, count = 1, options = {}) {
   return string.replace(regex2, indent.repeat(count));
 }
 
-// node_modules/ink/build/get-max-width.js
+// ../../node_modules/ink/build/get-max-width.js
 var getMaxWidth = (yogaNode) => {
   return yogaNode.getComputedWidth() - yogaNode.getComputedPadding(src_default.EDGE_LEFT) - yogaNode.getComputedPadding(src_default.EDGE_RIGHT) - yogaNode.getComputedBorder(src_default.EDGE_LEFT) - yogaNode.getComputedBorder(src_default.EDGE_RIGHT);
 }, get_max_width_default;
@@ -35710,7 +35710,7 @@ var init_get_max_width = __esm(async () => {
   get_max_width_default = getMaxWidth;
 });
 
-// node_modules/cli-boxes/boxes.json
+// ../../node_modules/cli-boxes/boxes.json
 var require_boxes = __commonJS((exports, module) => {
   module.exports = {
     single: {
@@ -35796,14 +35796,14 @@ var require_boxes = __commonJS((exports, module) => {
   };
 });
 
-// node_modules/cli-boxes/index.js
+// ../../node_modules/cli-boxes/index.js
 var require_cli_boxes = __commonJS((exports, module) => {
   var cliBoxes = require_boxes();
   module.exports = cliBoxes;
   module.exports.default = cliBoxes;
 });
 
-// node_modules/chalk/source/vendor/ansi-styles/index.js
+// ../../node_modules/chalk/source/vendor/ansi-styles/index.js
 function assembleStyles2() {
   const codes = new Map;
   for (const [groupName, group] of Object.entries(styles3)) {
@@ -35979,7 +35979,7 @@ var init_ansi_styles2 = __esm(() => {
   ansi_styles_default2 = ansiStyles2;
 });
 
-// node_modules/chalk/source/vendor/supports-color/index.js
+// ../../node_modules/chalk/source/vendor/supports-color/index.js
 import process4 from "process";
 import os2 from "os";
 import tty from "tty";
@@ -36113,7 +36113,7 @@ var init_supports_color = __esm(() => {
   supports_color_default = supportsColor;
 });
 
-// node_modules/chalk/source/utilities.js
+// ../../node_modules/chalk/source/utilities.js
 function stringReplaceAll(string, substring, replacer) {
   let index = string.indexOf(substring);
   if (index === -1) {
@@ -36146,7 +36146,7 @@ function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
   return returnValue;
 }
 
-// node_modules/chalk/source/index.js
+// ../../node_modules/chalk/source/index.js
 function createChalk(options) {
   return chalkFactory(options);
 }
@@ -36292,7 +36292,7 @@ var init_source = __esm(() => {
   source_default = chalk;
 });
 
-// node_modules/ink/build/colorize.js
+// ../../node_modules/ink/build/colorize.js
 var rgbRegex, ansiRegex2, isNamedColor = (color) => {
   return color in source_default;
 }, colorize = (str, color, type) => {
@@ -36336,7 +36336,7 @@ var init_colorize = __esm(() => {
   colorize_default = colorize;
 });
 
-// node_modules/ink/build/render-border.js
+// ../../node_modules/ink/build/render-border.js
 var import_cli_boxes, renderBorder = (x, y, node, output) => {
   if (node.style.borderStyle) {
     const width = node.yogaNode.getComputedWidth();
@@ -36404,7 +36404,7 @@ var init_render_border = __esm(() => {
   render_border_default = renderBorder;
 });
 
-// node_modules/ink/build/render-node-to-output.js
+// ../../node_modules/ink/build/render-node-to-output.js
 var applyPaddingToText = (node, text) => {
   const yogaNode = node.childNodes[0]?.yogaNode;
   if (yogaNode) {
@@ -36485,7 +36485,7 @@ var init_render_node_to_output = __esm(async () => {
   render_node_to_output_default = renderNodeToOutput;
 });
 
-// node_modules/slice-ansi/node_modules/is-fullwidth-code-point/index.js
+// ../../node_modules/slice-ansi/node_modules/is-fullwidth-code-point/index.js
 function isFullwidthCodePoint2(codePoint) {
   if (!Number.isInteger(codePoint)) {
     return false;
@@ -36496,7 +36496,7 @@ var init_is_fullwidth_code_point = __esm(() => {
   init_get_east_asian_width();
 });
 
-// node_modules/slice-ansi/index.js
+// ../../node_modules/slice-ansi/index.js
 function getEndCode(code) {
   if (endCodesSet.has(code)) {
     return code;
@@ -36631,7 +36631,7 @@ var init_slice_ansi2 = __esm(() => {
   }
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/ansiCodes.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/ansiCodes.js
 function getEndCode2(code) {
   if (endCodesSet2.has(code))
     return code;
@@ -36668,7 +36668,7 @@ var init_ansiCodes = __esm(() => {
   linkEndCode = `\x1B]8;;${linkCodeSuffix}`;
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/reduce.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/reduce.js
 function reduceAnsiCodes2(codes) {
   return reduceAnsiCodesIncremental([], codes);
 }
@@ -36691,7 +36691,7 @@ var init_reduce = __esm(() => {
   init_ansiCodes();
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/undo.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/undo.js
 function undoAnsiCodes2(codes) {
   return reduceAnsiCodes2(codes).reverse().map((code) => ({
     ...code,
@@ -36702,7 +36702,7 @@ var init_undo = __esm(() => {
   init_reduce();
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/diff.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/diff.js
 function diffAnsiCodes(from, to) {
   const endCodesInTo = new Set(to.map((code) => code.endCode));
   const startCodesInFrom = new Set(from.map((code) => code.code));
@@ -36715,7 +36715,7 @@ var init_diff = __esm(() => {
   init_undo();
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/styledChars.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/styledChars.js
 function styledCharsFromTokens(tokens) {
   let codes = [];
   const ret = [];
@@ -36753,7 +36753,7 @@ var init_styledChars = __esm(() => {
   init_reduce();
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/tokenize.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/tokenize.js
 function findNumberIndex2(str) {
   for (let index = 0;index < str.length; index++) {
     const charCode = str.charCodeAt(index);
@@ -36823,7 +36823,7 @@ var init_tokenize = __esm(() => {
   init_ansiCodes();
 });
 
-// node_modules/@alcalzone/ansi-tokenize/build/index.js
+// ../../node_modules/@alcalzone/ansi-tokenize/build/index.js
 var init_build = __esm(() => {
   init_ansiCodes();
   init_diff();
@@ -36833,7 +36833,7 @@ var init_build = __esm(() => {
   init_tokenize();
 });
 
-// node_modules/ink/build/output.js
+// ../../node_modules/ink/build/output.js
 class Output {
   width;
   height;
@@ -36977,7 +36977,7 @@ var init_output = __esm(() => {
   init_build();
 });
 
-// node_modules/ink/build/renderer.js
+// ../../node_modules/ink/build/renderer.js
 var renderer = (node) => {
   if (node.yogaNode) {
     const output = new Output({
@@ -37015,7 +37015,7 @@ var init_renderer = __esm(async () => {
   renderer_default = renderer;
 });
 
-// node_modules/mimic-fn/index.js
+// ../../node_modules/mimic-fn/index.js
 var require_mimic_fn = __commonJS((exports, module) => {
   var mimicFn = (to, from) => {
     for (const prop of Reflect.ownKeys(from)) {
@@ -37027,7 +37027,7 @@ var require_mimic_fn = __commonJS((exports, module) => {
   module.exports.default = mimicFn;
 });
 
-// node_modules/onetime/index.js
+// ../../node_modules/onetime/index.js
 var require_onetime = __commonJS((exports, module) => {
   var mimicFn = require_mimic_fn();
   var calledFunctions = new WeakMap;
@@ -37062,7 +37062,7 @@ var require_onetime = __commonJS((exports, module) => {
   };
 });
 
-// node_modules/restore-cursor/index.js
+// ../../node_modules/restore-cursor/index.js
 import process5 from "process";
 var import_onetime, import_signal_exit, restoreCursor, restore_cursor_default;
 var init_restore_cursor = __esm(() => {
@@ -37076,7 +37076,7 @@ var init_restore_cursor = __esm(() => {
   restore_cursor_default = restoreCursor;
 });
 
-// node_modules/cli-cursor/index.js
+// ../../node_modules/cli-cursor/index.js
 import process6 from "process";
 var isHidden = false, cliCursor, cli_cursor_default;
 var init_cli_cursor = __esm(() => {
@@ -37110,7 +37110,7 @@ var init_cli_cursor = __esm(() => {
   cli_cursor_default = cliCursor;
 });
 
-// node_modules/ink/build/log-update.js
+// ../../node_modules/ink/build/log-update.js
 var create = (stream, { showCursor = false } = {}) => {
   let previousLineCount = 0;
   let previousOutput = "";
@@ -37152,14 +37152,14 @@ var init_log_update = __esm(() => {
   log_update_default = logUpdate;
 });
 
-// node_modules/ink/build/instances.js
+// ../../node_modules/ink/build/instances.js
 var instances, instances_default;
 var init_instances = __esm(() => {
   instances = new WeakMap;
   instances_default = instances;
 });
 
-// node_modules/ink/build/components/AppContext.js
+// ../../node_modules/ink/build/components/AppContext.js
 var import_react, AppContext, AppContext_default;
 var init_AppContext = __esm(() => {
   import_react = __toESM(require_react(), 1);
@@ -37170,7 +37170,7 @@ var init_AppContext = __esm(() => {
   AppContext_default = AppContext;
 });
 
-// node_modules/ink/build/components/StdinContext.js
+// ../../node_modules/ink/build/components/StdinContext.js
 import { EventEmitter } from "events";
 import process7 from "process";
 var import_react2, StdinContext, StdinContext_default;
@@ -37187,7 +37187,7 @@ var init_StdinContext = __esm(() => {
   StdinContext_default = StdinContext;
 });
 
-// node_modules/ink/build/components/StdoutContext.js
+// ../../node_modules/ink/build/components/StdoutContext.js
 import process8 from "process";
 var import_react3, StdoutContext, StdoutContext_default;
 var init_StdoutContext = __esm(() => {
@@ -37200,7 +37200,7 @@ var init_StdoutContext = __esm(() => {
   StdoutContext_default = StdoutContext;
 });
 
-// node_modules/ink/build/components/StderrContext.js
+// ../../node_modules/ink/build/components/StderrContext.js
 import process9 from "process";
 var import_react4, StderrContext, StderrContext_default;
 var init_StderrContext = __esm(() => {
@@ -37213,7 +37213,7 @@ var init_StderrContext = __esm(() => {
   StderrContext_default = StderrContext;
 });
 
-// node_modules/ink/build/components/FocusContext.js
+// ../../node_modules/ink/build/components/FocusContext.js
 var import_react5, FocusContext, FocusContext_default;
 var init_FocusContext = __esm(() => {
   import_react5 = __toESM(require_react(), 1);
@@ -37233,7 +37233,7 @@ var init_FocusContext = __esm(() => {
   FocusContext_default = FocusContext;
 });
 
-// node_modules/escape-string-regexp/index.js
+// ../../node_modules/escape-string-regexp/index.js
 var require_escape_string_regexp = __commonJS((exports, module) => {
   var matchOperatorsRegex = /[|\\{}()[\]^$+*?.-]/g;
   module.exports = (string) => {
@@ -37244,7 +37244,7 @@ var require_escape_string_regexp = __commonJS((exports, module) => {
   };
 });
 
-// node_modules/stack-utils/index.js
+// ../../node_modules/stack-utils/index.js
 var require_stack_utils = __commonJS((exports, module) => {
   var escapeStringRegexp = require_escape_string_regexp();
   var cwd = typeof process === "object" && process && typeof process.cwd === "function" ? process.cwd() : ".";
@@ -37482,7 +37482,7 @@ var require_stack_utils = __commonJS((exports, module) => {
   module.exports = StackUtils;
 });
 
-// node_modules/convert-to-spaces/dist/index.js
+// ../../node_modules/convert-to-spaces/dist/index.js
 var convertToSpaces = (input, spaces = 2) => {
   return input.replace(/^\t+/gm, ($1) => " ".repeat($1.length * spaces));
 }, dist_default2;
@@ -37490,7 +37490,7 @@ var init_dist2 = __esm(() => {
   dist_default2 = convertToSpaces;
 });
 
-// node_modules/code-excerpt/dist/index.js
+// ../../node_modules/code-excerpt/dist/index.js
 var generateLineNumbers = (line, around) => {
   const lineNumbers = [];
   const min = line - around;
@@ -37518,7 +37518,7 @@ var init_dist3 = __esm(() => {
   dist_default3 = codeExcerpt;
 });
 
-// node_modules/ink/build/components/Box.js
+// ../../node_modules/ink/build/components/Box.js
 var import_react6, Box, Box_default;
 var init_Box = __esm(() => {
   import_react6 = __toESM(require_react(), 1);
@@ -37539,7 +37539,7 @@ var init_Box = __esm(() => {
   Box_default = Box;
 });
 
-// node_modules/ink/build/components/Text.js
+// ../../node_modules/ink/build/components/Text.js
 function Text({ color, backgroundColor, dimColor = false, bold = false, italic = false, underline = false, strikethrough = false, inverse = false, wrap = "wrap", children }) {
   if (children === undefined || children === null) {
     return null;
@@ -37580,7 +37580,7 @@ var init_Text = __esm(() => {
   import_react7 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/components/ErrorOverview.js
+// ../../node_modules/ink/build/components/ErrorOverview.js
 import * as fs from "fs";
 import { cwd } from "process";
 function ErrorOverview({ error }) {
@@ -37623,7 +37623,7 @@ var init_ErrorOverview = __esm(() => {
   });
 });
 
-// node_modules/ink/build/components/App.js
+// ../../node_modules/ink/build/components/App.js
 import { EventEmitter as EventEmitter2 } from "events";
 import process10 from "process";
 var import_react9, tab = "\t", shiftTab = "\x1B[Z", escape = "\x1B", App;
@@ -37877,7 +37877,7 @@ Read about how to prevent this error on https://github.com/vadimdemedes/ink/#isr
   };
 });
 
-// node_modules/ink/build/ink.js
+// ../../node_modules/ink/build/ink.js
 import process11 from "process";
 
 class Ink {
@@ -38093,7 +38093,7 @@ var init_ink = __esm(async () => {
   import_signal_exit2 = __toESM(require_signal_exit(), 1);
 });
 
-// node_modules/ink/build/render.js
+// ../../node_modules/ink/build/render.js
 import { Stream } from "stream";
 import process12 from "process";
 var render = (node, options) => {
@@ -38139,32 +38139,32 @@ var init_render = __esm(async () => {
   render_default = render;
 });
 
-// node_modules/ink/build/components/Static.js
+// ../../node_modules/ink/build/components/Static.js
 var import_react11;
 var init_Static = __esm(() => {
   import_react11 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/components/Transform.js
+// ../../node_modules/ink/build/components/Transform.js
 var import_react12;
 var init_Transform = __esm(() => {
   import_react12 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/components/Newline.js
+// ../../node_modules/ink/build/components/Newline.js
 var import_react13;
 var init_Newline = __esm(() => {
   import_react13 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/components/Spacer.js
+// ../../node_modules/ink/build/components/Spacer.js
 var import_react14;
 var init_Spacer = __esm(() => {
   init_Box();
   import_react14 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/parse-keypress.js
+// ../../node_modules/ink/build/parse-keypress.js
 import { Buffer as Buffer2 } from "buffer";
 var metaKeyCodeRe, fnKeyRe, keyName, nonAlphanumericKeys, isShiftKey = (code) => {
   return [
@@ -38346,7 +38346,7 @@ var init_parse_keypress = __esm(() => {
   parse_keypress_default = parseKeypress;
 });
 
-// node_modules/ink/build/hooks/use-stdin.js
+// ../../node_modules/ink/build/hooks/use-stdin.js
 var import_react15, useStdin = () => import_react15.useContext(StdinContext_default), use_stdin_default;
 var init_use_stdin = __esm(() => {
   init_StdinContext();
@@ -38354,7 +38354,7 @@ var init_use_stdin = __esm(() => {
   use_stdin_default = useStdin;
 });
 
-// node_modules/ink/build/hooks/use-input.js
+// ../../node_modules/ink/build/hooks/use-input.js
 var import_react16, useInput = (inputHandler, options = {}) => {
   const { stdin, setRawMode, internal_exitOnCtrlC, internal_eventEmitter } = use_stdin_default();
   import_react16.useEffect(() => {
@@ -38418,28 +38418,28 @@ var init_use_input = __esm(async () => {
   use_input_default = useInput;
 });
 
-// node_modules/ink/build/hooks/use-app.js
+// ../../node_modules/ink/build/hooks/use-app.js
 var import_react17;
 var init_use_app = __esm(() => {
   init_AppContext();
   import_react17 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/hooks/use-stdout.js
+// ../../node_modules/ink/build/hooks/use-stdout.js
 var import_react18;
 var init_use_stdout = __esm(() => {
   init_StdoutContext();
   import_react18 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/hooks/use-stderr.js
+// ../../node_modules/ink/build/hooks/use-stderr.js
 var import_react19;
 var init_use_stderr = __esm(() => {
   init_StderrContext();
   import_react19 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/hooks/use-focus.js
+// ../../node_modules/ink/build/hooks/use-focus.js
 var import_react20;
 var init_use_focus = __esm(() => {
   init_FocusContext();
@@ -38447,17 +38447,17 @@ var init_use_focus = __esm(() => {
   import_react20 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/hooks/use-focus-manager.js
+// ../../node_modules/ink/build/hooks/use-focus-manager.js
 var import_react21;
 var init_use_focus_manager = __esm(() => {
   init_FocusContext();
   import_react21 = __toESM(require_react(), 1);
 });
 
-// node_modules/ink/build/measure-element.js
+// ../../node_modules/ink/build/measure-element.js
 var init_measure_element = () => {};
 
-// node_modules/ink/build/index.js
+// ../../node_modules/ink/build/index.js
 var init_build2 = __esm(async () => {
   init_Box();
   init_Text();
@@ -38537,7 +38537,7 @@ function makeMessage(role, kind, content, title) {
 }
 var init_messages = () => {};
 
-// node_modules/react/cjs/react-jsx-dev-runtime.development.js
+// ../../node_modules/react/cjs/react-jsx-dev-runtime.development.js
 var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
   var React10 = __toESM(require_react());
   if (true) {
@@ -39418,7 +39418,7 @@ Check the top-level render call using <` + parentName + ">.";
   }
 });
 
-// node_modules/react/jsx-dev-runtime.js
+// ../../node_modules/react/jsx-dev-runtime.js
 var require_jsx_dev_runtime = __commonJS((exports, module) => {
   var react_jsx_dev_runtime_development = __toESM(require_react_jsx_dev_runtime_development());
   if (false) {} else {
@@ -39690,8 +39690,8 @@ var init_commands = __esm(() => {
 `);
 });
 
-// src/query.ts
-function chooseTool(prompt, tools) {
+// src/adapters/mockAdapter.ts
+function chooseTool(_app, prompt, tools) {
   const lowered = prompt.toLowerCase();
   return tools.find((tool) => tool.keywords.some((keyword) => lowered.includes(keyword)));
 }
@@ -39704,6 +39704,16 @@ function buildMockResponse(app, prompt, toolName) {
     `This makes the shell reusable across the ${app.title} domain without changing the architecture skeleton.`
   ].join(" ");
 }
+var mockAdapter;
+var init_mockAdapter = __esm(() => {
+  mockAdapter = {
+    id: "mock",
+    selectTool: chooseTool,
+    generateResponseText: buildMockResponse
+  };
+});
+
+// src/query.ts
 function chunk(text) {
   const words = text.split(" ");
   const chunks = [];
@@ -39713,22 +39723,32 @@ function chunk(text) {
   return chunks;
 }
 async function* query(params) {
-  const { app, prompt, tools, notificationFactory } = params;
+  const { app, prompt, tools, notificationFactory, adapter } = params;
   yield { type: "status", status: `Planning response inside ${app.title}...` };
   await sleep(120);
-  const selectedTool = chooseTool(prompt, tools);
-  if (selectedTool) {
-    yield {
-      type: "tool-call",
-      toolName: selectedTool.name,
-      detail: `Mock tool call triggered by prompt keywords in ${app.id}.`
-    };
-    const result = await selectedTool.run(prompt, app);
-    yield {
-      type: "tool-result",
-      toolName: selectedTool.name,
-      result: result.result
-    };
+  let selectedTool;
+  let responseText;
+  try {
+    selectedTool = adapter.selectTool(app, prompt, tools);
+    if (selectedTool) {
+      yield {
+        type: "tool-call",
+        toolName: selectedTool.name,
+        detail: `Mock tool call triggered by prompt keywords in ${app.id}.`
+      };
+      const result = await selectedTool.run(prompt, app);
+      yield {
+        type: "tool-result",
+        toolName: selectedTool.name,
+        result: result.result
+      };
+    }
+    responseText = adapter.generateResponseText(app, prompt, selectedTool?.name);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    yield { type: "status", status: `Error: ${message}` };
+    yield { type: "done" };
+    return;
   }
   const messageId = createId("assistant");
   yield {
@@ -39736,7 +39756,7 @@ async function* query(params) {
     messageId,
     title: `${app.title} response`
   };
-  for (const part of chunk(buildMockResponse(app, prompt, selectedTool?.name))) {
+  for (const part of chunk(responseText)) {
     await sleep(45);
     yield {
       type: "assistant-chunk",
@@ -39758,21 +39778,25 @@ class QueryEngine {
   app;
   tools;
   notificationFactory;
-  constructor(app, tools, notificationFactory) {
+  adapter;
+  constructor(app, tools, notificationFactory, adapter = mockAdapter) {
     this.app = app;
     this.tools = tools;
     this.notificationFactory = notificationFactory;
+    this.adapter = adapter;
   }
   async* submitPrompt(prompt, _messages) {
     yield* query({
       app: this.app,
       prompt,
       tools: this.tools,
-      notificationFactory: this.notificationFactory
+      notificationFactory: this.notificationFactory,
+      adapter: this.adapter
     });
   }
 }
 var init_QueryEngine = __esm(() => {
+  init_mockAdapter();
   init_query();
 });
 
@@ -39837,6 +39861,127 @@ function getTools(app) {
   ];
 }
 var init_tools = () => {};
+
+// src/mocks/fixtures/coding-agent.json
+var coding_agent_default;
+var init_coding_agent = __esm(() => {
+  coding_agent_default = [
+    {
+      match: ["codebase", "files", "modules"],
+      toolName: "workspace-map",
+      response: "Coding Agent replayed a fixture: the workspace-map fixture describes three active modules and flags one module needing a refactor pass."
+    },
+    {
+      match: ["default"],
+      response: "Coding Agent replayed the default fixture: no specific tool fixture matched, so this is the canned fallback response for the software delivery workspace."
+    }
+  ];
+});
+
+// src/mocks/fixtures/planning-studio.json
+var planning_studio_default;
+var init_planning_studio = __esm(() => {
+  planning_studio_default = [
+    {
+      match: ["roadmap", "initiative", "sequence"],
+      toolName: "roadmap-weave",
+      response: "Planning Studio replayed a fixture: the roadmap-weave fixture sequences three initiatives across the next two quarters."
+    },
+    {
+      match: ["default"],
+      response: "Planning Studio replayed the default fixture: no specific tool fixture matched, so this is the canned fallback response for the product planning workspace."
+    }
+  ];
+});
+
+// src/mocks/fixtures/incident-console.json
+var incident_console_default;
+var init_incident_console = __esm(() => {
+  incident_console_default = [
+    {
+      match: ["impact", "services", "blast"],
+      toolName: "blast-radius",
+      response: "Incident Console replayed a fixture: the blast-radius fixture estimates two downstream services are affected."
+    },
+    {
+      match: ["default"],
+      response: "Incident Console replayed the default fixture: no specific tool fixture matched, so this is the canned fallback response for the incident response workspace."
+    }
+  ];
+});
+
+// src/adapters/fixtureAdapter.ts
+function isSupportedFixtureAppId(appId) {
+  return SUPPORTED_FIXTURE_APP_IDS.includes(appId);
+}
+function assertSupportedFixtureAppId(appId) {
+  if (!isSupportedFixtureAppId(appId)) {
+    throw new Error(`Adapter "fixture" has no fixtures for app "${appId}". Supported apps: ${SUPPORTED_FIXTURE_APP_IDS.join(", ")}. Use --adapter mock instead.`);
+  }
+}
+function matchEntry(entries, prompt) {
+  const lowered = prompt.toLowerCase();
+  const hit = entries.find((entry) => !entry.match.includes("default") && entry.match.some((keyword) => lowered.includes(keyword)));
+  return hit ?? entries.find((entry) => entry.match.includes("default"));
+}
+function createFixtureAdapter() {
+  return {
+    id: "fixture",
+    selectTool(app, prompt, tools) {
+      assertSupportedFixtureAppId(app.id);
+      const entry = matchEntry(FIXTURES_BY_APP[app.id], prompt);
+      if (!entry.toolName) {
+        return;
+      }
+      return tools.find((tool) => tool.name === entry.toolName);
+    },
+    generateResponseText(app, prompt) {
+      assertSupportedFixtureAppId(app.id);
+      return matchEntry(FIXTURES_BY_APP[app.id], prompt).response;
+    }
+  };
+}
+var SUPPORTED_FIXTURE_APP_IDS, FIXTURES_BY_APP;
+var init_fixtureAdapter = __esm(() => {
+  init_coding_agent();
+  init_planning_studio();
+  init_incident_console();
+  SUPPORTED_FIXTURE_APP_IDS = ["coding-agent", "planning-studio", "incident-console"];
+  FIXTURES_BY_APP = {
+    "coding-agent": coding_agent_default,
+    "planning-studio": planning_studio_default,
+    "incident-console": incident_console_default
+  };
+  for (const [appId, entries] of Object.entries(FIXTURES_BY_APP)) {
+    const hasDefault = entries.some((entry) => entry.match.includes("default"));
+    if (!hasDefault) {
+      throw new Error(`Fixture file for "${appId}" is missing a required "default" entry.`);
+    }
+  }
+});
+
+// src/adapters/registry.ts
+function getAdapter(id) {
+  if (id === "mock") {
+    return mockAdapter;
+  }
+  if (id === "fixture") {
+    return createFixtureAdapter();
+  }
+  throw new Error(`Unknown adapter "${id}". Valid adapters: ${KNOWN_ADAPTER_IDS.join(", ")}.`);
+}
+function assertAdapterSupportsApp(adapterId, appId) {
+  if (adapterId !== "fixture") {
+    return;
+  }
+  assertSupportedFixtureAppId(appId);
+}
+var KNOWN_ADAPTER_IDS;
+var init_registry = __esm(() => {
+  init_mockAdapter();
+  init_fixtureAdapter();
+  KNOWN_ADAPTER_IDS = ["mock", "fixture"];
+});
 
 // src/components/FullscreenLayout.tsx
 function FullscreenLayout(props) {
@@ -40261,7 +40406,7 @@ function REPL() {
   const activeTaskIdRef = import_react30.useRef(null);
   const commands = import_react30.useMemo(() => getCommands(app), [app]);
   const tools = import_react30.useMemo(() => getTools(app), [app]);
-  const queryEngine = import_react30.useMemo(() => new QueryEngine(app, tools, () => createMockNotification(app)), [app, tools]);
+  const queryEngine = import_react30.useMemo(() => new QueryEngine(app, tools, () => createMockNotification(app), getAdapter(process.env.MOCK_TUI_ADAPTER ?? "mock")), [app, tools]);
   const terminal = useTerminalSize();
   const visibleCount = Math.max(8, terminal.rows - (panel === "none" ? 10 : 18));
   import_react30.useEffect(() => {
@@ -40319,7 +40464,12 @@ function REPL() {
   };
   function applyQueryEvent(event, assistantMessageId) {
     if (event.type === "status") {
-      setAppState((prev) => ({ ...prev, statusLine: event.status }));
+      const isError = event.status.startsWith("Error:");
+      setAppState((prev) => ({
+        ...prev,
+        statusLine: event.status,
+        messages: isError ? [...prev.messages, makeMessage("system", "status", event.status, "Adapter error")] : prev.messages
+      }));
       return;
     }
     if (event.type === "tool-call") {
@@ -40613,6 +40763,7 @@ var init_REPL = __esm(async () => {
   init_AppState();
   init_messages();
   init_tools();
+  init_registry();
   init_useTerminalSize();
   init_useMailboxBridge();
   init_useTaskListWatcher();
@@ -40630,7 +40781,7 @@ var init_REPL = __esm(async () => {
   jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime(), 1);
 });
 
-// node_modules/commander/esm.mjs
+// ../../node_modules/commander/esm.mjs
 var import__ = __toESM(require_commander(), 1);
 var {
   program,
@@ -40743,6 +40894,7 @@ async function launchRepl(root, appProps, renderAndRun2) {
 // src/main.tsx
 init_tools();
 init_QueryEngine();
+init_registry();
 init_runtime();
 init_messages();
 function startDeferredPrefetches() {
@@ -40753,14 +40905,15 @@ function startDeferredPrefetches() {
 function initializeEntrypoint(isNonInteractive) {
   process.env.MOCK_TUI_ENTRYPOINT = isNonInteractive ? "headless" : "interactive";
 }
-async function runPrintMode(appId, prompt) {
+async function runPrintMode(appId, prompt, adapter) {
   const app = getAppDefinition(appId);
   const tools = getTools(app);
-  const queryEngine = new QueryEngine(app, tools, () => createMockNotification(app));
+  const queryEngine = new QueryEngine(app, tools, () => createMockNotification(app), adapter);
   const transcript = [
     ...getDefaultAppState(app.id).messages,
     makeMessage("user", "text", prompt, "Prompt")
   ];
+  let sawAdapterError = false;
   for await (const event of queryEngine.submitPrompt(prompt, transcript)) {
     if (event.type === "assistant-chunk") {
       process.stdout.write(event.chunk);
@@ -40774,13 +40927,22 @@ async function runPrintMode(appId, prompt) {
       process.stdout.write(`[tool-result:${event.toolName}] ${event.result}
 `);
     }
+    if (event.type === "status" && event.status.startsWith("Error:")) {
+      sawAdapterError = true;
+      process.stderr.write(`
+${event.status}
+`);
+    }
   }
   process.stdout.write(`
 `);
+  if (sawAdapterError) {
+    process.exitCode = 1;
+  }
 }
 async function main() {
   const program2 = new Command;
-  program2.name("mock-tui-platform").argument("[prompt]", "Optional prompt for headless mode").option("--app <id>", "Select an app variant").option("-p, --print", "Run a headless prompt against the mock query engine").option("--list-apps", "Print available application ids");
+  program2.name("mock-tui-platform").argument("[prompt]", "Optional prompt for headless mode").option("--app <id>", "Select an app variant").option("-p, --print", "Run a headless prompt against the mock query engine").option("--list-apps", "Print available application ids").option("--adapter <id>", "Response adapter to use (mock or fixture)", "mock");
   await program2.parseAsync(process.argv);
   const options = program2.opts();
   const prompt = program2.args[0];
@@ -40793,16 +40955,25 @@ async function main() {
   }
   const requestedAppId = options.app ?? APP_DEFINITIONS[0].id;
   const app = getAppDefinition(requestedAppId);
+  let adapter;
+  try {
+    adapter = getAdapter(options.adapter);
+    assertAdapterSupportsApp(options.adapter, app.id);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw await exitWithMessage(message);
+  }
   if (options.print) {
     initializeEntrypoint(true);
     const submission = handlePromptSubmit(prompt ?? `Give me a quick status brief for ${app.title}.`);
     if (!submission || submission.kind !== "query") {
       throw await exitWithMessage("Headless mode requires a non-command prompt.");
     }
-    await runPrintMode(app.id, submission.input);
+    await runPrintMode(app.id, submission.input, adapter);
     return;
   }
   initializeEntrypoint(false);
+  process.env.MOCK_TUI_ADAPTER = options.adapter;
   const root = await createRoot(getRenderContext().renderOptions);
   const selectedAppId = await showSetupScreens(root, APP_DEFINITIONS, options.app);
   startDeferredPrefetches();

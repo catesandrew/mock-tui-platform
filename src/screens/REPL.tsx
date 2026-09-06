@@ -8,6 +8,7 @@ import type { AppDefinition, AppPanel, MockTask, QueryEvent, TranscriptMessage }
 import { handlePromptSubmit } from "../utils/handlePromptSubmit";
 import { makeMessage } from "../utils/messages";
 import { getTools } from "../tools";
+import { getAdapter } from "../adapters/registry";
 import { FullscreenLayout } from "../components/FullscreenLayout";
 import { VirtualMessageList } from "../components/VirtualMessageList";
 import { PromptInput } from "../components/PromptInput";
@@ -41,7 +42,7 @@ export function REPL(): React.ReactNode {
   const commands = useMemo(() => getCommands(app), [app]);
   const tools = useMemo(() => getTools(app), [app]);
   const queryEngine = useMemo(
-    () => new QueryEngine(app, tools, () => createMockNotification(app)),
+    () => new QueryEngine(app, tools, () => createMockNotification(app), getAdapter(process.env.MOCK_TUI_ADAPTER ?? "mock")),
     [app, tools],
   );
   const terminal = useTerminalSize();
@@ -111,7 +112,14 @@ export function REPL(): React.ReactNode {
 
   function applyQueryEvent(event: QueryEvent, assistantMessageId: { current: string }) {
     if (event.type === "status") {
-      setAppState(prev => ({ ...prev, statusLine: event.status }));
+      const isError = event.status.startsWith("Error:");
+      setAppState(prev => ({
+        ...prev,
+        statusLine: event.status,
+        messages: isError
+          ? [...prev.messages, makeMessage("system", "status", event.status, "Adapter error")]
+          : prev.messages,
+      }));
       return;
     }
 

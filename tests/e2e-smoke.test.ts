@@ -37,4 +37,19 @@ describe("e2e smoke", () => {
     expect(output).toContain("Planning Studio received the prompt");
     expect(output).toContain("streaming transcript updates");
   });
+
+  test("runs a headless print flow through the fixture adapter", () => {
+    const output = run([
+      "run",
+      "dist/cli.js",
+      "--adapter",
+      "fixture",
+      "--app",
+      "coding-agent",
+      "--print",
+      "show me the codebase modules",
+    ]);
+
+    expect(output).toContain("workspace-map fixture");
+  });
 });

@@ -12,7 +12,7 @@ decisions — which tool fires, what the final assistant text says — to a `Res
 adapters ship: `mockAdapter` (today's inline logic, moved verbatim) and a fixture-replay adapter
 covering 3 apps, both selected via `getAdapter(id)`.
 
-**Tech Stack:** Bun, TypeScript, `node:fs`/`node:url` (no new dependencies).
+**Tech Stack:** Bun, TypeScript (no new dependencies; fixture data loads via static JSON `import`).
 
 ## Global Constraints
 
@@ -806,9 +806,12 @@ Expected: stderr shows `Unknown adapter "bogus". Valid adapters: mock, fixture.`
 Run: `bun run dist/cli.js --adapter fixture --app sales-copilot --print "hi"; echo "exit=$?"`
 Expected: stderr shows the unsupported-app message naming the 3 supported apps, `exit=1`.
 
-Manually verify Step 4b's fix: run `MOCK_TUI_ADAPTER=fixture bun run src/cli.ts --app coding-agent`,
-switch variants with `/variant sales-copilot`, submit any prompt, and confirm the unsupported-app
-error appears as a message in the transcript (not just a footer line that then disappears).
+Manually verify Step 4b's fix: run `bun run src/cli.ts --adapter fixture --app coding-agent` (use
+the `--adapter` flag, not the `MOCK_TUI_ADAPTER` env var alone — `main.tsx`'s interactive branch
+unconditionally sets `process.env.MOCK_TUI_ADAPTER = options.adapter`, so an externally-set env
+var without the matching flag is clobbered before `REPL.tsx` ever reads it), switch variants with
+`/variant sales-copilot`, submit any prompt, and confirm the unsupported-app error appears as a
+message in the transcript (not just a footer line that then disappears).
 
 - [ ] **Step 7: Commit**
 
@@ -829,7 +832,10 @@ git commit -m "feat: wire --adapter CLI flag through headless and interactive mo
 - Produces: nothing consumed by other tasks.
 
 **Acceptance Criteria:**
-- `docs/ONBOARDING.md` documents the `--adapter` flag and `MOCK_TUI_ADAPTER` env var.
+- `docs/ONBOARDING.md` documents the `--adapter` flag and the fixture-replay adapter's 3 supported
+  apps. Do **not** document `MOCK_TUI_ADAPTER` as a user-facing setting — Task 3's review found
+  it's write-only internal state (`main.tsx`'s interactive branch always overwrites it from
+  `options.adapter`), not something a user can usefully set themselves.
 - `tests/docs.test.ts` still passes unmodified (it only checks for pre-existing section headers,
   which remain unchanged).
 

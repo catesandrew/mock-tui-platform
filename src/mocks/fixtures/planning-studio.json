@@ -1,0 +1,11 @@
+[
+  {
+    "match": ["roadmap", "initiative", "sequence"],
+    "toolName": "roadmap-weave",
+    "response": "Planning Studio replayed a fixture: the roadmap-weave fixture sequences three initiatives across the next two quarters."
+  },
+  {
+    "match": ["default"],
+    "response": "Planning Studio replayed the default fixture: no specific tool fixture matched, so this is the canned fallback response for the product planning workspace."
+  }
+]
