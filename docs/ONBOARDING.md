@@ -74,6 +74,15 @@ bun run src/cli.ts --app coding-agent --print "map the codebase modules"
 bun run dist/cli.js --app planning-studio --print "draft a launch plan for the next initiative"
 ```
 
+Response content comes from a pluggable adapter (`--adapter mock` by default). Try the
+fixture-replay adapter, which covers `coding-agent`, `planning-studio`, and `incident-console`:
+
+```bash
+bun run src/cli.ts --adapter fixture --app coding-agent --print "show me the codebase modules"
+```
+
+Selecting `--adapter fixture` with any other app exits with an error naming the supported apps.
+
 ## Recommended first reads
 
 - `src/main.tsx`
