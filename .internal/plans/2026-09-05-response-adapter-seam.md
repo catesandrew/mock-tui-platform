@@ -832,7 +832,10 @@ git commit -m "feat: wire --adapter CLI flag through headless and interactive mo
 - Produces: nothing consumed by other tasks.
 
 **Acceptance Criteria:**
-- `docs/ONBOARDING.md` documents the `--adapter` flag and `MOCK_TUI_ADAPTER` env var.
+- `docs/ONBOARDING.md` documents the `--adapter` flag and the fixture-replay adapter's 3 supported
+  apps. Do **not** document `MOCK_TUI_ADAPTER` as a user-facing setting — Task 3's review found
+  it's write-only internal state (`main.tsx`'s interactive branch always overwrites it from
+  `options.adapter`), not something a user can usefully set themselves.
 - `tests/docs.test.ts` still passes unmodified (it only checks for pre-existing section headers,
   which remain unchanged).
 
