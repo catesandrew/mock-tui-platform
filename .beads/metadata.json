@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "mock_tui_platform",
+  "project_id": "7ddd48b6-8dbc-42f4-9b41-af499776f02d"
+}
