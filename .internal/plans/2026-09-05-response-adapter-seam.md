@@ -16,8 +16,9 @@ covering 3 apps, both selected via `getAdapter(id)`.
 
 ## Global Constraints
 
-- No new npm/bun dependencies — only existing deps (`commander`, `ink`, `react`) and Node builtins
-  (`node:fs`, `node:url`).
+- No new npm/bun dependencies — only existing deps (`commander`, `ink`, `react`). Fixture data is
+  loaded via static `import` of the JSON files, not `node:fs`/`node:url` — required so bundling
+  into `dist/cli.js` doesn't break fixture path resolution (see Task 2).
 - `QueryEvent`'s type union (`src/types.ts`) does not change shape — errors surface via the
   existing `{ type: "status", status: string }` variant, never a new event type.
 - `tests/query.test.ts` must pass with **zero edits** — this is the explicit acceptance bar for
@@ -452,14 +453,21 @@ describe("query with fixture adapter", () => {
 Run: `bun test tests/adapters.test.ts`
 Expected: FAIL — `Cannot find module '../src/adapters/fixtureAdapter'` / `'../src/adapters/registry'`.
 
-- [ ] **Step 4: Implement fixtureAdapter**
+- [ ] **Step 4: Implement fixtureAdapter using static JSON imports**
+
+Static imports (not `fs.readFileSync`) are required here: `bun build` bundles `src/cli.ts` into a
+single `dist/cli.js`, and a path built relative to `import.meta.url` at runtime would resolve
+against the bundle's own location, not the original source file's — breaking fixture lookup once
+built. Static imports are resolved and inlined by Bun's bundler at build time instead, so this
+works identically from `src/cli.ts` (dev) and the built `dist/cli.js`.
 
 Create `src/adapters/fixtureAdapter.ts`:
 
 ```ts
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import type { ResponseAdapter } from "./types";
+import codingAgentFixtures from "../mocks/fixtures/coding-agent.json";
+import planningStudioFixtures from "../mocks/fixtures/planning-studio.json";
+import incidentConsoleFixtures from "../mocks/fixtures/incident-console.json";
 
 export const SUPPORTED_FIXTURE_APP_IDS = ["coding-agent", "planning-studio", "incident-console"] as const;
 export type SupportedFixtureAppId = (typeof SUPPORTED_FIXTURE_APP_IDS)[number];
@@ -468,21 +476,31 @@ export function isSupportedFixtureAppId(appId: string): appId is SupportedFixtur
   return (SUPPORTED_FIXTURE_APP_IDS as readonly string[]).includes(appId);
 }
 
+export function assertSupportedFixtureAppId(appId: string): asserts appId is SupportedFixtureAppId {
+  if (!isSupportedFixtureAppId(appId)) {
+    throw new Error(
+      `Adapter "fixture" has no fixtures for app "${appId}". Supported apps: ${SUPPORTED_FIXTURE_APP_IDS.join(", ")}. Use --adapter mock instead.`,
+    );
+  }
+}
+
 type FixtureEntry = {
   match: string[];
   toolName?: string;
   response: string;
 };
 
-function loadFixtureFile(appId: SupportedFixtureAppId): FixtureEntry[] {
-  const filePath = fileURLToPath(new URL(`../mocks/fixtures/${appId}.json`, import.meta.url));
-  const raw = readFileSync(filePath, "utf8");
-  const entries = JSON.parse(raw) as FixtureEntry[];
+const FIXTURES_BY_APP: Record<SupportedFixtureAppId, FixtureEntry[]> = {
+  "coding-agent": codingAgentFixtures,
+  "planning-studio": planningStudioFixtures,
+  "incident-console": incidentConsoleFixtures,
+};
+
+for (const [appId, entries] of Object.entries(FIXTURES_BY_APP)) {
   const hasDefault = entries.some(entry => entry.match.includes("default"));
   if (!hasDefault) {
     throw new Error(`Fixture file for "${appId}" is missing a required "default" entry.`);
   }
-  return entries;
 }
 
 function matchEntry(entries: FixtureEntry[], prompt: string): FixtureEntry {
@@ -494,30 +512,19 @@ function matchEntry(entries: FixtureEntry[], prompt: string): FixtureEntry {
 }
 
 export function createFixtureAdapter(): ResponseAdapter {
-  const fixturesByApp = new Map<SupportedFixtureAppId, FixtureEntry[]>(
-    SUPPORTED_FIXTURE_APP_IDS.map(appId => [appId, loadFixtureFile(appId)]),
-  );
-
-  function requireFixtures(appId: string): FixtureEntry[] {
-    if (!isSupportedFixtureAppId(appId)) {
-      throw new Error(
-        `Adapter "fixture" has no fixtures for app "${appId}". Supported apps: ${SUPPORTED_FIXTURE_APP_IDS.join(", ")}. Use --adapter mock instead.`,
-      );
-    }
-    return fixturesByApp.get(appId)!;
-  }
-
   return {
     id: "fixture",
     selectTool(app, prompt, tools) {
-      const entry = matchEntry(requireFixtures(app.id), prompt);
+      assertSupportedFixtureAppId(app.id);
+      const entry = matchEntry(FIXTURES_BY_APP[app.id], prompt);
       if (!entry.toolName) {
         return undefined;
       }
       return tools.find(tool => tool.name === entry.toolName);
     },
     generateResponseText(app, prompt) {
-      return matchEntry(requireFixtures(app.id), prompt).response;
+      assertSupportedFixtureAppId(app.id);
+      return matchEntry(FIXTURES_BY_APP[app.id], prompt).response;
     },
   };
 }
@@ -530,21 +537,16 @@ Create `src/adapters/registry.ts`:
 ```ts
 import type { ResponseAdapter } from "./types";
 import { mockAdapter } from "./mockAdapter";
-import { createFixtureAdapter, SUPPORTED_FIXTURE_APP_IDS, isSupportedFixtureAppId } from "./fixtureAdapter";
+import { createFixtureAdapter, assertSupportedFixtureAppId } from "./fixtureAdapter";
 
 const KNOWN_ADAPTER_IDS = ["mock", "fixture"] as const;
-
-let cachedFixtureAdapter: ResponseAdapter | undefined;
 
 export function getAdapter(id: string): ResponseAdapter {
   if (id === "mock") {
     return mockAdapter;
   }
   if (id === "fixture") {
-    if (!cachedFixtureAdapter) {
-      cachedFixtureAdapter = createFixtureAdapter();
-    }
-    return cachedFixtureAdapter;
+    return createFixtureAdapter();
   }
   throw new Error(`Unknown adapter "${id}". Valid adapters: ${KNOWN_ADAPTER_IDS.join(", ")}.`);
 }
@@ -553,11 +555,7 @@ export function assertAdapterSupportsApp(adapterId: string, appId: string): void
   if (adapterId !== "fixture") {
     return;
   }
-  if (!isSupportedFixtureAppId(appId)) {
-    throw new Error(
-      `Adapter "fixture" has no fixtures for app "${appId}". Supported apps: ${SUPPORTED_FIXTURE_APP_IDS.join(", ")}. Use --adapter mock instead.`,
-    );
-  }
+  assertSupportedFixtureAppId(appId);
 }
 ```
 
@@ -820,3 +818,51 @@ Expected: all pass.
 git add docs/ONBOARDING.md
 git commit -m "docs: document the --adapter flag and fixture-replay adapter"
 ```
+
+---
+
+## Stress Test Results: response-adapter-seam plan
+
+### Resolved Decisions
+
+- **Bundled `dist/cli.js` fixture path resolution (critical)**: the original plan used runtime
+  `fs.readFileSync` + `fileURLToPath(new URL(..., import.meta.url))`, which resolves against the
+  *bundle's* location after `bun build`, not the original source file's — the plan's own e2e test
+  running `dist/cli.js --adapter fixture ...` would have failed with `ENOENT`. Verified the fix
+  (static JSON `import`) with an isolated `bun build` test before locking it in: bundled output
+  correctly inlines the JSON data and runs standalone.
+- **Duplicated error-message logic**: `fixtureAdapter`'s per-call check and `registry.ts`'s
+  CLI-startup check each independently constructed the same error string. Collapsed into one
+  exported `assertSupportedFixtureAppId` in `fixtureAdapter.ts`, called by both.
+- **Task dependency ordering**: linear 1→2→3→4 with Consumes/Produces sections already
+  documenting the handoff; no explicit dependency table needed.
+- **Test coverage**: cross-checked against the spec's Testing section — mock parity, fixture
+  matching/default fallback, registry errors, runtime unsupported-app-via-query error path, CLI
+  e2e for the fixture adapter, docs test — all present, no gap.
+- **Security, scale**: static imports remove even the reduced filesystem-path surface from the
+  design-level review; still N/A for both.
+- **Alternative fixture format**: considered collapsing the 3 JSON files into one `fixtures.ts`
+  module; kept the 3 separate JSON files (no complexity difference, matches the spec's
+  plain-data framing).
+
+### Changes Made
+
+- `fixtureAdapter.ts` rewritten to use static `import` of the 3 fixture JSON files instead of
+  `fs.readFileSync`/`fileURLToPath`. Default-entry validation moved to a module-level loop that
+  runs once at import time (process startup) rather than inside a lazy loader function.
+- `registry.ts` simplified: no more manual singleton caching (static imports mean
+  `createFixtureAdapter()` is already cheap — no I/O to memoize), and `assertAdapterSupportsApp`
+  now delegates to `fixtureAdapter.ts`'s single `assertSupportedFixtureAppId` instead of
+  duplicating the throw.
+- Global Constraints updated to drop the `node:fs`/`node:url` mention.
+
+### Deferred / Parking Lot
+
+- Same as the design's: real network-backed adapter, fixture coverage beyond the 3 named apps —
+  both explicitly out of scope.
+
+### Confidence Assessment
+
+- Overall: High.
+- Areas of concern: none outstanding. The one critical bug found (bundled-build fixture path
+  resolution) was verified fixed with an isolated build test, not just reasoned about.
