@@ -73,10 +73,18 @@ an adapter must not introduce hidden state or randomness that could desync the t
 
   ```json
   [
-    { "match": ["status", "overview"], "toolName": "mock-inspector", "toolResult": "...", "response": "..." },
+    { "match": ["status", "overview"], "toolName": "mock-inspector", "response": "..." },
     { "match": ["default"], "response": "..." }
   ]
   ```
+
+  `toolName`, when present, must name a tool that exists in the `tools` array `selectTool` is
+  called with (`ToolDefinition.name`) — `selectTool` looks up and returns that `ToolDefinition`
+  object; `generateResponseText` returns the entry's `response` string. There is no `toolResult`
+  field: the `tool-result` event's content still comes from `selectedTool.run(prompt, app)` (the
+  generic mock execution in `tools.ts`, unchanged) for both adapters — the content-only interface
+  (`selectTool` + `generateResponseText`) has no seam for overriding tool-result content, only
+  which tool fires and what the final assistant text says.
 
   Every fixture file must include exactly one entry whose `match` array contains the literal
   string `"default"` — used when no other entry's keywords match the prompt (case-insensitive
