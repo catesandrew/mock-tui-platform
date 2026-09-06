@@ -58,6 +58,11 @@ export type ResponseAdapter = {
 };
 ```
 
+**Contract:** both methods must be pure, deterministic functions of their inputs. `query()` calls
+them independently (not as one combined call) and expects `selectTool`'s pick and
+`generateResponseText`'s output to stay consistent with each other for the same `(app, prompt)` —
+an adapter must not introduce hidden state or randomness that could desync the two.
+
 ### Adapters
 
 - `src/adapters/mockAdapter.ts`: moves today's `chooseTool` and `buildMockResponse` out of
@@ -75,8 +80,15 @@ export type ResponseAdapter = {
 
   Every fixture file must include exactly one entry whose `match` array contains the literal
   string `"default"` — used when no other entry's keywords match the prompt (case-insensitive
-  substring match, same semantics as today's `chooseTool`). Missing default entry is a load-time
-  error (fail fast at startup, not at first unmatched prompt).
+  substring match, same semantics as today's `chooseTool`).
+
+  Because `generateResponseText`/`selectTool` only receive `app` at call time (not at adapter
+  construction time), fixtures cannot be lazily discovered per-app and still claim to "fail fast
+  at startup." Instead, `getAdapter("fixture")` eagerly reads and parses all 3 known fixture
+  files (`coding-agent.json`, `planning-studio.json`, `incident-console.json` — the supported-app
+  list is static, defined once in `registry.ts`) at construction time, validating each has a
+  `default` entry and is well-formed JSON. Any failure (missing file, invalid JSON, missing
+  `default` entry) throws immediately from `getAdapter("fixture")` itself.
 - `src/adapters/registry.ts`: `getAdapter(id: string): ResponseAdapter`.
   - Unknown `id` -> throws `Unknown adapter "<id>". Valid adapters: mock, fixture.`
   - `id === "fixture"` and `app.id` not in `["coding-agent", "planning-studio", "incident-console"]`
@@ -89,6 +101,16 @@ callers must pass one; `QueryEngine` is what supplies the default). Internal `ch
 `buildMockResponse` functions are deleted from `query.ts`; call sites become
 `adapter.selectTool(prompt, tools)` and `adapter.generateResponseText(app, prompt, selectedTool?.name)`.
 `chunk()` (the text-to-event chunking helper) stays in `query.ts` — it's choreography, not content.
+
+**Adapter error handling:** both adapter calls are wrapped in try/catch inside `query()`. On
+failure (e.g. the fixture adapter's app-not-supported error, reachable at runtime via the
+interactive `/variant <id>` command switching to an app outside the fixture adapter's 3 supported
+ids), `query()` yields `{ type: "status", status: "Error: <message>" }` followed by `{ type:
+"done" }` and returns — it does not let the error propagate out of the generator. This keeps
+`QueryEvent`'s shape unchanged (per Non-goals) while preventing an uncaught throw from crashing a
+live Ink render. The headless `--print` path is a single-shot process, not a long-lived render, so
+`runPrintMode` does not need this try/catch — an adapter error there is validated away before this
+point (see CLI wiring) or, if it still occurs, is acceptable to propagate and exit non-zero.
 
 ### QueryEngine changes
 
@@ -112,11 +134,15 @@ adapter's behavior by default.
 .option("--adapter <id>", "Response adapter to use", "mock")
 ```
 
-Validated manually against `getAdapter`'s known ids before constructing `QueryEngine`, calling
-`exitWithMessage` on failure (same pattern already used for
+Validated manually against `getAdapter`'s known ids immediately after `program.parseAsync`, before
+either the `--print` or interactive branch runs (mirroring how `getAppDefinition(requestedAppId)`
+already validates the app id early, before any rendering starts) — not deferred into
+`runPrintMode` or `REPL.tsx`'s `useMemo`, where an invalid value would otherwise only surface after
+the Ink UI has already mounted. Calls `exitWithMessage` on failure (same pattern already used for
 `"Headless mode requires a non-command prompt."`) — not via commander's `.choices()`, so the
 valid-id list stays defined once, in `registry.ts`, instead of duplicated into the CLI option
-declaration.
+declaration. (`--list-apps` still short-circuits before this, unaffected since it never touches an
+adapter.)
 
 - Headless (`--print`): `runPrintMode` takes `adapterId` as a new parameter, resolves it via
   `getAdapter`, passes it into `new QueryEngine(...)`.
@@ -135,22 +161,31 @@ declaration.
   - `getAdapter("bogus")` throws with the unknown-adapter message.
   - `getAdapter("fixture")` for an unsupported app (e.g. `sales-copilot`) throws with the
     unsupported-app message naming the 3 supported apps.
-- `tests/query.test.ts`: unmodified, must still pass (proves the refactor is behavior-preserving
-  for the default adapter).
+  - `query()` with the fixture adapter driven against an app outside the 3 supported ids (e.g.
+    simulating a `/variant` switch to `sales-copilot`) yields `{ type: "status", status: "Error:
+    ..." }` followed by `{ type: "done" }` — never throws out of the generator.
+- `tests/query.test.ts`: **unmodified, must pass with zero edits** — this is the explicit
+  acceptance bar for mock-adapter parity (not just "moved verbatim" as an unverified claim). Any
+  assertion or snapshot change here means the refactor altered mock behavior.
 - `tests/e2e-smoke.test.ts`: add one case running the built CLI with
   `--adapter fixture --app coding-agent --print "<prompt>"` and asserting the fixture response
   text appears in stdout.
 
 ## Error handling
 
-Two failure modes, both synchronous and both surfaced through the existing CLI error path
-(`exitWithMessage` / non-zero exit), never a silent fallback:
+Three failure modes, none a silent fallback:
 
-1. Unknown `--adapter` value.
-2. `--adapter fixture` combined with an `--app` outside the 3 supported ids.
-
-A fixture file missing its `default` entry is a load-time throw (not a request-time throw),
-since it's a data-authoring bug, not a runtime condition.
+1. Unknown `--adapter` value, or `--adapter fixture` combined with an `--app` outside the 3
+   supported ids **at CLI startup** — both are validated synchronously right after arg parsing and
+   surfaced through the existing CLI error path (`exitWithMessage` / non-zero exit), before any
+   rendering or query engine construction happens.
+2. A fixture file that's missing, malformed JSON, or missing its `default` entry — thrown
+   synchronously from `getAdapter("fixture")` itself (eager-loaded at construction; a
+   data-authoring bug, not a runtime condition).
+3. An app switching to an unsupported id **after** startup, via the interactive `/variant <id>`
+   command, while the fixture adapter is active — this can't be caught at CLI-parse time since the
+   app wasn't known yet. `query()` catches it per-prompt and surfaces it as an in-transcript
+   `status` event (see query.ts changes) instead of crashing the REPL.
 
 ## Consequences
 
@@ -164,3 +199,51 @@ since it's a data-authoring bug, not a runtime condition.
   supported apps and the fallback flag.
 - Two new CLI-observable behaviors (`--adapter` flag, `MOCK_TUI_ADAPTER` env var) need a line in
   `docs/ONBOARDING.md`'s verification/manual-smoke sections.
+
+## Stress Test Results: response-adapter-seam design
+
+### Resolved Decisions
+
+- **Mock-adapter parity**: `tests/query.test.ts` passing with zero edits is the explicit
+  acceptance bar, not an implicit "moved verbatim" claim.
+- **Fixture load timing**: the original "fail fast at startup" claim was structurally impossible
+  given the interface (`app` only arrives at call time). Fixed to eager-load-and-validate all 3
+  known fixture files at `getAdapter("fixture")` construction time (static supported-app list),
+  genuinely restoring startup-time failure.
+- **Runtime `/variant` switch to an unsupported app**: identified as an uncaught-throw-crashes-the-
+  REPL bug in the original design. Fixed: `query()` catches adapter errors and surfaces them as an
+  in-transcript `status` event, preserving the `QueryEvent` non-goal (no new event type).
+- **Determinism contract**: `ResponseAdapter`'s two independently-called methods now have an
+  explicit purity/determinism requirement documented on the interface.
+- **CLI validation ordering**: `--adapter` validation moved to immediately after arg parsing in
+  `main()`, before either branch, mirroring existing app-id validation — not deferred into
+  `runPrintMode` or `REPL.tsx`.
+- **Security, scale, rollback**: no security surface (appId always pre-validated against the fixed
+  catalog before touching the filesystem), no scale dimension (single-user CLI/TUI), rollback is a
+  plain git revert of a docs-only spec plus a later single-PR implementation — all resolved N/A.
+- **Alternative interface shapes revisited**: considered collapsing `selectTool` +
+  `generateResponseText` into one combined call to remove the determinism-contract note by
+  construction; rejected as more invasive to `query.ts` for a benefit not worth the churn.
+
+### Changes Made
+
+- Added an explicit determinism/purity contract note to the `ResponseAdapter` interface.
+- Changed fixture loading from an unspecified "load time" to eager loading of all 3 known files at
+  `getAdapter("fixture")` construction.
+- Added adapter-error try/catch in `query()`, surfacing failures as a `status` event instead of
+  throwing out of the generator.
+- Added explicit CLI validation ordering (right after `parseAsync`, before branching).
+- Added a new test case (fixture adapter + unsupported app → error status event, not a throw).
+- Made the mock-parity acceptance bar explicit in the Testing section.
+
+### Deferred / Parking Lot
+
+- Real network-backed adapter (explicitly out of scope, per Non-goals).
+- Fixture coverage for the other 9 variants (explicitly out of scope, documented boundary).
+
+### Confidence Assessment
+
+- Overall: High.
+- Areas of concern: none outstanding. The two structural gaps found (fixture-load timing
+  contradiction, uncaught-throw-crashes-REPL on runtime app switch) are both resolved in the design
+  above; nothing is being carried forward as a known risk into implementation.
