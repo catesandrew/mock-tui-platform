@@ -112,10 +112,11 @@ adapter's behavior by default.
 .option("--adapter <id>", "Response adapter to use", "mock")
 ```
 
-using commander's `.choices(["mock", "fixture"])` if the installed commander version supports it
-on `.option()`'s returned `Option`; otherwise validate manually against `getAdapter`'s known ids
-before constructing `QueryEngine`, calling `exitWithMessage` on failure (same pattern already
-used for `"Headless mode requires a non-command prompt."`).
+Validated manually against `getAdapter`'s known ids before constructing `QueryEngine`, calling
+`exitWithMessage` on failure (same pattern already used for
+`"Headless mode requires a non-command prompt."`) — not via commander's `.choices()`, so the
+valid-id list stays defined once, in `registry.ts`, instead of duplicated into the CLI option
+declaration.
 
 - Headless (`--print`): `runPrintMode` takes `adapterId` as a new parameter, resolves it via
   `getAdapter`, passes it into `new QueryEngine(...)`.
