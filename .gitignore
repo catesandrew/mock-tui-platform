@@ -4,3 +4,5 @@
 *.db
 .beads-credential-key
 .beads/proxieddb/
+# bd worktree
+.worktrees/response-adapter-seam/
