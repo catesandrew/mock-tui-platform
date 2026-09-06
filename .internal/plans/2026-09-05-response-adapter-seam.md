@@ -806,9 +806,12 @@ Expected: stderr shows `Unknown adapter "bogus". Valid adapters: mock, fixture.`
 Run: `bun run dist/cli.js --adapter fixture --app sales-copilot --print "hi"; echo "exit=$?"`
 Expected: stderr shows the unsupported-app message naming the 3 supported apps, `exit=1`.
 
-Manually verify Step 4b's fix: run `MOCK_TUI_ADAPTER=fixture bun run src/cli.ts --app coding-agent`,
-switch variants with `/variant sales-copilot`, submit any prompt, and confirm the unsupported-app
-error appears as a message in the transcript (not just a footer line that then disappears).
+Manually verify Step 4b's fix: run `bun run src/cli.ts --adapter fixture --app coding-agent` (use
+the `--adapter` flag, not the `MOCK_TUI_ADAPTER` env var alone — `main.tsx`'s interactive branch
+unconditionally sets `process.env.MOCK_TUI_ADAPTER = options.adapter`, so an externally-set env
+var without the matching flag is clobbered before `REPL.tsx` ever reads it), switch variants with
+`/variant sales-copilot`, submit any prompt, and confirm the unsupported-app error appears as a
+message in the transcript (not just a footer line that then disappears).
 
 - [ ] **Step 7: Commit**
 
