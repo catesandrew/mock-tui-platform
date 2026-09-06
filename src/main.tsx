@@ -22,7 +22,7 @@ function initializeEntrypoint(isNonInteractive: boolean): void {
   process.env.MOCK_TUI_ENTRYPOINT = isNonInteractive ? "headless" : "interactive";
 }
 
-async function runPrintMode(appId: string, prompt: string, adapter: ResponseAdapter): Promise<void> {
+export async function runPrintMode(appId: string, prompt: string, adapter: ResponseAdapter): Promise<void> {
   const app = getAppDefinition(appId);
   const tools = getTools(app);
   const queryEngine = new QueryEngine(app, tools, () => createMockNotification(app), adapter);
@@ -30,6 +30,8 @@ async function runPrintMode(appId: string, prompt: string, adapter: ResponseAdap
     ...getDefaultAppState(app.id).messages,
     makeMessage("user", "text", prompt, "Prompt"),
   ];
+
+  let sawAdapterError = false;
 
   for await (const event of queryEngine.submitPrompt(prompt, transcript)) {
     if (event.type === "assistant-chunk") {
@@ -42,11 +44,16 @@ async function runPrintMode(appId: string, prompt: string, adapter: ResponseAdap
       process.stdout.write(`[tool-result:${event.toolName}] ${event.result}\n`);
     }
     if (event.type === "status" && event.status.startsWith("Error:")) {
-      process.stdout.write(`\n${event.status}\n`);
+      sawAdapterError = true;
+      process.stderr.write(`\n${event.status}\n`);
     }
   }
 
   process.stdout.write("\n");
+
+  if (sawAdapterError) {
+    process.exitCode = 1;
+  }
 }
 
 export async function main(): Promise<void> {

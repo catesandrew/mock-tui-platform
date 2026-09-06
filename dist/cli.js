@@ -40913,6 +40913,7 @@ async function runPrintMode(appId, prompt, adapter) {
     ...getDefaultAppState(app.id).messages,
     makeMessage("user", "text", prompt, "Prompt")
   ];
+  let sawAdapterError = false;
   for await (const event of queryEngine.submitPrompt(prompt, transcript)) {
     if (event.type === "assistant-chunk") {
       process.stdout.write(event.chunk);
@@ -40927,13 +40928,17 @@ async function runPrintMode(appId, prompt, adapter) {
 `);
     }
     if (event.type === "status" && event.status.startsWith("Error:")) {
-      process.stdout.write(`
+      sawAdapterError = true;
+      process.stderr.write(`
 ${event.status}
 `);
     }
   }
   process.stdout.write(`
 `);
+  if (sawAdapterError) {
+    process.exitCode = 1;
+  }
 }
 async function main() {
   const program2 = new Command;
