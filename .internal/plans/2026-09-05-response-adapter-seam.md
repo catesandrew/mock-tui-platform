@@ -12,7 +12,7 @@ decisions — which tool fires, what the final assistant text says — to a `Res
 adapters ship: `mockAdapter` (today's inline logic, moved verbatim) and a fixture-replay adapter
 covering 3 apps, both selected via `getAdapter(id)`.
 
-**Tech Stack:** Bun, TypeScript, `node:fs`/`node:url` (no new dependencies).
+**Tech Stack:** Bun, TypeScript (no new dependencies; fixture data loads via static JSON `import`).
 
 ## Global Constraints
 
