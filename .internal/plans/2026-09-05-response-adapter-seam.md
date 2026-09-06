@@ -596,6 +596,9 @@ git commit -m "feat: add fixture-replay adapter and adapter registry"
   `Unknown adapter "bogus". Valid adapters: mock, fixture.` on stderr.
 - `bun run dist/cli.js --adapter fixture --app sales-copilot --print "hi"` exits non-zero with the
   unsupported-app message, before any query engine runs.
+- Interactive mode: an adapter error (e.g. `/variant`-switching to an unsupported app under
+  `--adapter fixture`) appears as a durable transcript message, not just a footer flash overwritten
+  by the next status update (Step 4b).
 
 - [ ] **Step 1: Write the failing e2e test**
 
@@ -748,6 +751,48 @@ Replace the `queryEngine` useMemo (lines 43-46):
   );
 ```
 
+- [ ] **Step 4b: Make error status events survive the post-loop status reset**
+
+**Discovered during Task 1's review, not in the original plan text:** `applyQueryEvent`'s
+`status` branch only updates `statusLine` (the footer). The `for await` loop's caller
+unconditionally resets `statusLine` to `` `${app.title} is idle. Ready for the next prompt.` ``
+immediately after the loop ends (`src/screens/REPL.tsx` around line 108) — which runs right after
+`query()`'s error path yields its `status` event and then `done`. Today, an adapter error is
+invisible in interactive mode: the footer briefly holds the error text for zero renders, then gets
+overwritten, and nothing is added to the transcript. Fix: error status events also append a
+transcript message, which the trailing idle-status reset cannot clobber.
+
+In `src/screens/REPL.tsx`, replace the `status` branch inside `applyQueryEvent` (currently):
+
+```ts
+    if (event.type === "status") {
+      setAppState(prev => ({ ...prev, statusLine: event.status }));
+      return;
+    }
+```
+
+with:
+
+```ts
+    if (event.type === "status") {
+      const isError = event.status.startsWith("Error:");
+      setAppState(prev => ({
+        ...prev,
+        statusLine: event.status,
+        messages: isError
+          ? [...prev.messages, makeMessage("system", "status", event.status, "Adapter error")]
+          : prev.messages,
+      }));
+      return;
+    }
+```
+
+There is no existing test coverage for `REPL.tsx`'s internal event handling (no unit tests exist
+for this component today), so verify this manually in Step 6 rather than adding a new test
+pattern the rest of the file doesn't use: run interactively with `--adapter fixture`, switch to an
+unsupported app via `/variant sales-copilot`, submit a prompt, and confirm the error appears as a
+transcript message (not just a footer flash).
+
 - [ ] **Step 5: Run the full check suite**
 
 Run: `bun run build && bun run typecheck && bun test`
@@ -760,6 +805,10 @@ Expected: stderr shows `Unknown adapter "bogus". Valid adapters: mock, fixture.`
 
 Run: `bun run dist/cli.js --adapter fixture --app sales-copilot --print "hi"; echo "exit=$?"`
 Expected: stderr shows the unsupported-app message naming the 3 supported apps, `exit=1`.
+
+Manually verify Step 4b's fix: run `MOCK_TUI_ADAPTER=fixture bun run src/cli.ts --app coding-agent`,
+switch variants with `/variant sales-copilot`, submit any prompt, and confirm the unsupported-app
+error appears as a message in the transcript (not just a footer line that then disappears).
 
 - [ ] **Step 7: Commit**
 
