@@ -53,10 +53,14 @@ into the default path.
 ```ts
 export type ResponseAdapter = {
   id: string;
-  selectTool(prompt: string, tools: ToolDefinition[]): ToolDefinition | undefined;
+  selectTool(app: AppDefinition, prompt: string, tools: ToolDefinition[]): ToolDefinition | undefined;
   generateResponseText(app: AppDefinition, prompt: string, toolName?: string): string;
 };
 ```
+
+Both methods take `app` (found while writing `fixtureAdapter`: fixture data is per-app, so
+`selectTool` needs `app` to know which fixture set to consult — `mockAdapter`'s implementation
+simply ignores the parameter, since its tool matching is app-independent).
 
 **Contract:** both methods must be pure, deterministic functions of their inputs. `query()` calls
 them independently (not as one combined call) and expects `selectTool`'s pick and
@@ -97,17 +101,25 @@ an adapter must not introduce hidden state or randomness that could desync the t
   list is static, defined once in `registry.ts`) at construction time, validating each has a
   `default` entry and is well-formed JSON. Any failure (missing file, invalid JSON, missing
   `default` entry) throws immediately from `getAdapter("fixture")` itself.
-- `src/adapters/registry.ts`: `getAdapter(id: string): ResponseAdapter`.
-  - Unknown `id` -> throws `Unknown adapter "<id>". Valid adapters: mock, fixture.`
-  - `id === "fixture"` and `app.id` not in `["coding-agent", "planning-studio", "incident-console"]`
-    -> throws `Adapter "fixture" has no fixtures for app "<appId>". Supported apps: coding-agent, planning-studio, incident-console. Use --adapter mock instead.`
+- `src/adapters/registry.ts`:
+  - `getAdapter(id: string): ResponseAdapter` — unknown `id` throws
+    `Unknown adapter "<id>". Valid adapters: mock, fixture.`. Returns a memoized singleton for
+    `"fixture"` so the eager fixture-file load in `fixtureAdapter.ts` happens once per process, on
+    first request for that adapter (not on every `getAdapter` call, and not for `"mock"` at all).
+  - `assertAdapterSupportsApp(adapterId: string, appId: string): void` — no-op unless
+    `adapterId === "fixture"`; throws
+    `Adapter "fixture" has no fixtures for app "<appId>". Supported apps: coding-agent,
+    planning-studio, incident-console. Use --adapter mock instead.` if `appId` isn't one of the 3
+    supported ids. Exported so both the CLI's startup check (for the initially-selected `--app`)
+    and `fixtureAdapter`'s per-call check (for a later interactive `/variant` switch) share one
+    implementation and one message — no duplicated logic to drift out of sync.
 
 ### query.ts changes
 
 `query()` gains an `adapter: ResponseAdapter` field on its params object (required, no default —
 callers must pass one; `QueryEngine` is what supplies the default). Internal `chooseTool` and
 `buildMockResponse` functions are deleted from `query.ts`; call sites become
-`adapter.selectTool(prompt, tools)` and `adapter.generateResponseText(app, prompt, selectedTool?.name)`.
+`adapter.selectTool(app, prompt, tools)` and `adapter.generateResponseText(app, prompt, selectedTool?.name)`.
 `chunk()` (the text-to-event chunking helper) stays in `query.ts` — it's choreography, not content.
 
 **Adapter error handling:** both adapter calls are wrapped in try/catch inside `query()`. On
