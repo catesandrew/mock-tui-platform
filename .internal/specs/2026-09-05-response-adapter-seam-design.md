@@ -96,23 +96,32 @@ an adapter must not introduce hidden state or randomness that could desync the t
 
   Because `generateResponseText`/`selectTool` only receive `app` at call time (not at adapter
   construction time), fixtures cannot be lazily discovered per-app and still claim to "fail fast
-  at startup." Instead, `getAdapter("fixture")` eagerly reads and parses all 3 known fixture
-  files (`coding-agent.json`, `planning-studio.json`, `incident-console.json` — the supported-app
-  list is static, defined once in `registry.ts`) at construction time, validating each has a
-  `default` entry and is well-formed JSON. Any failure (missing file, invalid JSON, missing
-  `default` entry) throws immediately from `getAdapter("fixture")` itself.
+  at startup." Instead, all 3 fixture files (`coding-agent.json`, `planning-studio.json`,
+  `incident-console.json` — the supported-app list is static, defined once in `fixtureAdapter.ts`)
+  are loaded via **static `import` statements**, not runtime `fs.readFileSync`. This is required,
+  not just simpler: `bun build` bundles `src/cli.ts` into a single `dist/cli.js`, and a runtime
+  path constructed relative to `import.meta.url` resolves against the *bundle's* location, not the
+  original source file's location — breaking fixture lookup entirely once built. Static imports
+  are resolved and inlined by Bun's bundler at build time, so the bundled output carries the data
+  directly with no runtime path math, working identically from `src/cli.ts` (dev) or `dist/cli.js`
+  (built). Each imported fixture array is validated for a `default` entry in a module-level loop
+  that runs once, the first time `fixtureAdapter.ts` is imported (transitively, whenever
+  `registry.ts` is loaded — i.e., at process startup, not deferred to first `--adapter fixture`
+  use). Malformed JSON is also caught here, since it fails at `import` resolution itself.
+- `src/adapters/fixtureAdapter.ts` also exports
+  `assertSupportedFixtureAppId(appId: string): asserts appId is SupportedFixtureAppId` — the single
+  throw site for `Adapter "fixture" has no fixtures for app "<appId>". Supported apps:
+  coding-agent, planning-studio, incident-console. Use --adapter mock instead.`. Both
+  `selectTool`/`generateResponseText` (per-call, e.g. after an interactive `/variant` switch) and
+  `registry.ts`'s `assertAdapterSupportsApp` (CLI startup check, see below) call this one function
+  — no duplicated message construction to drift out of sync.
 - `src/adapters/registry.ts`:
   - `getAdapter(id: string): ResponseAdapter` — unknown `id` throws
-    `Unknown adapter "<id>". Valid adapters: mock, fixture.`. Returns a memoized singleton for
-    `"fixture"` so the eager fixture-file load in `fixtureAdapter.ts` happens once per process, on
-    first request for that adapter (not on every `getAdapter` call, and not for `"mock"` at all).
+    `Unknown adapter "<id>". Valid adapters: mock, fixture.`.
   - `assertAdapterSupportsApp(adapterId: string, appId: string): void` — no-op unless
-    `adapterId === "fixture"`; throws
-    `Adapter "fixture" has no fixtures for app "<appId>". Supported apps: coding-agent,
-    planning-studio, incident-console. Use --adapter mock instead.` if `appId` isn't one of the 3
-    supported ids. Exported so both the CLI's startup check (for the initially-selected `--app`)
-    and `fixtureAdapter`'s per-call check (for a later interactive `/variant` switch) share one
-    implementation and one message — no duplicated logic to drift out of sync.
+    `adapterId === "fixture"`, otherwise delegates to `assertSupportedFixtureAppId(appId)` above.
+    Exported so the CLI's startup check (for the initially-selected `--app`) can validate before
+    any query runs, using the exact same check `fixtureAdapter` uses internally at call time.
 
 ### query.ts changes
 
