@@ -1,0 +1,11 @@
+[
+  {
+    "match": ["codebase", "files", "modules"],
+    "toolName": "workspace-map",
+    "response": "Coding Agent replayed a fixture: the workspace-map fixture describes three active modules and flags one module needing a refactor pass."
+  },
+  {
+    "match": ["default"],
+    "response": "Coding Agent replayed the default fixture: no specific tool fixture matched, so this is the canned fallback response for the software delivery workspace."
+  }
+]

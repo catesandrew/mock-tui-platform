@@ -1,0 +1,11 @@
+[
+  {
+    "match": ["impact", "services", "blast"],
+    "toolName": "blast-radius",
+    "response": "Incident Console replayed a fixture: the blast-radius fixture estimates two downstream services are affected."
+  },
+  {
+    "match": ["default"],
+    "response": "Incident Console replayed the default fixture: no specific tool fixture matched, so this is the canned fallback response for the incident response workspace."
+  }
+]
