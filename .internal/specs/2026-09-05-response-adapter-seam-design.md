@@ -134,15 +134,23 @@ adapter's behavior by default.
 .option("--adapter <id>", "Response adapter to use", "mock")
 ```
 
-Validated manually against `getAdapter`'s known ids immediately after `program.parseAsync`, before
-either the `--print` or interactive branch runs (mirroring how `getAppDefinition(requestedAppId)`
-already validates the app id early, before any rendering starts) — not deferred into
-`runPrintMode` or `REPL.tsx`'s `useMemo`, where an invalid value would otherwise only surface after
-the Ink UI has already mounted. Calls `exitWithMessage` on failure (same pattern already used for
+Validated manually against `getAdapter`'s known ids right after `const app =
+getAppDefinition(requestedAppId)` in `main()` (so the check has the resolved `app.id` available),
+and before the `if (options.print)` branch — not deferred into `runPrintMode` or `REPL.tsx`'s
+`useMemo`, where an invalid value would otherwise only surface after the Ink UI has already
+mounted. Calls `exitWithMessage` on failure (same pattern already used for
 `"Headless mode requires a non-command prompt."`) — not via commander's `.choices()`, so the
 valid-id list stays defined once, in `registry.ts`, instead of duplicated into the CLI option
 declaration. (`--list-apps` still short-circuits before this, unaffected since it never touches an
 adapter.)
+
+Note: `getAppDefinition(appId)` does **not** throw on an unknown app id — it silently falls back to
+`APP_DEFINITIONS[0]` (`found ?? APP_DEFINITIONS[0]!`). This is pre-existing behavior, out of scope
+for this spec, and not something the adapter validation should try to mirror. It does mean the
+`--adapter fixture` + unsupported-app check in `registry.ts` must compare against the *resolved*
+`app.id` (always one of the 12 real catalog ids after `getAppDefinition` runs), not the raw
+`--app` string — an invalid `--app` value never reaches the adapter check as an invalid app id in
+the first place.
 
 - Headless (`--print`): `runPrintMode` takes `adapterId` as a new parameter, resolves it via
   `getAdapter`, passes it into `new QueryEngine(...)`.
