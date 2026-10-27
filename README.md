@@ -1,5 +1,7 @@
 # Mock TUI Platform
 
+**Tags:** `tui`
+
 A standalone, runnable mock shell that mirrors the recovered Claude Code-style TUI architecture while replacing real integrations with mock data.
 
 ## Goals
